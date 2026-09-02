@@ -1,0 +1,8 @@
+<div class="myDropdown" [ngStyle]="customStyles">
+    <label class="form-label">{{ label }}</label>
+    <div class="dropdown-options">
+        <select [formControl]="control" (change)="onSelectChange($event)" class="form-select">
+            <option *ngFor="let option of options" [value]="option[valueProperty]">{{ option[labelProperty] }}</option>
+        </select>
+    </div>
+</div>

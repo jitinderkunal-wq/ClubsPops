@@ -1,0 +1,168 @@
+<div class="container-fluid main">
+    <div class="row header align-items-center">
+        <div class="col-lg-3 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><img [src]="organizationLogo" alt="" />{{organizationName}}</h1>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12">
+            <div class="row justify-content-end">
+                <div class="col dropD">
+                    <span>Status</span>
+                    <select name="status" class="drp" id="status" [(ngModel)]="accommodationStatusIdSelected"
+                        (change)="onAccommodationStatusSelected($event)">
+                        <!-- <option value="">All</option> -->
+                        <option *ngFor="let status of accommodationStatuses" [value]="status.accommodationStatusId">{{
+                            status.statusName }}</option>
+                    </select>
+                </div>
+                <div class="col dropD">
+                    <span>Types</span>
+                    <select name="type" class="drp" id="type" [(ngModel)]="accommodationTypeIdSelected"
+                        (change)="onAccommodationTypeSelected($event)">
+                        <!-- <option value="">All</option> -->
+                        <option *ngFor="let type of accommodationTypes" [value]="type.accommodationTypeId">{{
+                            type.typeName }}</option>
+                    </select>
+                </div>
+                <div class="col boxdiv">
+                    <p>Over Due - <b>{{overdue}}</b></p>
+                </div>
+                <div class="col boxdiv">
+                    <p>Lockers in use - <b>{{lockersInUse}}/{{totalLockers}}</b></p>
+                </div>
+                <div class="col boxdiv">
+                    <p>Rooms in use - <b>{{roomsInUse}}/{{totalRooms}}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row header align-items-center accomo-btns">
+        <div class="col-8 col-md-7 left">
+            <div class="booking">
+                {{selectedAccommodationInfo}}
+            </div>
+        </div>
+        <div class="col-4 col-md-5 right">
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn" (click)="sideMenuToggle()"><i class="fa fa-close"></i>Side Menu</a>
+                    <a class="btn" (click)="refresh()"><i class="fa fa-refresh"></i>Refresh</a>
+                    <!-- <a class="btn" routerLink="/dashboard"><i class="fa fa-arrow-left"></i>Back</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row accommodationPage">
+        <div [ngClass]="sideToggle ? 'col-12 box' : 'col-8 box'">
+            <div class="row">
+                <div *ngFor="let accommodation of accommodations" [ngClass]="{
+                        'col-2 acmdNo': true,
+                        'in-use': accommodation.accommodationStatusId === 2,
+                        'needs-maintenance': accommodation.accommodationStatusId === 3,
+                        'needs-cleaning': accommodation.accommodationStatusId === 4,
+                        'employee-accommodation': accommodation.accommodationStatusId === 7
+                    }">
+                    <ng-container
+                        *ngIf="accommodation.accommodationStatusId === 2 || accommodation.accommodationStatusId === 3 || accommodation.accommodationStatusId === 4 || accommodation.accommodationStatusId === 5 || accommodation.accommodationStatusId === 7; else disableButton">
+                        <a *ngIf="accommodation.accommodationStatusId === 2"
+                            routerLink="/accommodations/{{accommodation.accommodationId}}/bookedAccommodation"
+                            (mouseenter)="showAccommodationInfo(accommodation)"
+                            [ngClass]="{'overDue': isOverdue(accommodation)}">
+                            {{accommodation.number}}</a>
+                        <a *ngIf="accommodation.accommodationStatusId === 3"
+                            (click)="openClearOutOfServicePopup(accommodation)"
+                            (mouseenter)="showAccommodationInfoNeedsMaintenance(accommodation)">{{accommodation.number}}</a>
+                        <a *ngIf="accommodation.accommodationStatusId === 4"
+                            (click)="openCleaningCompletePopup(accommodation)"
+                            (mouseenter)="showAccommodationInfoNeedsCleaning(accommodation)">{{accommodation.number}}</a>
+                        <a *ngIf="accommodation.accommodationStatusId === 5"
+                            routerLink="/accommodations/{{accommodation.accommodationId}}"
+                            (mouseenter)="showAccommodationInfo(accommodation)">{{accommodation.number}}</a>
+                        <a *ngIf="accommodation.accommodationStatusId === 7"
+                            (mouseenter)="showEmployeeAccommodationInfo(accommodation)">{{accommodation.number}}</a>
+                    </ng-container>
+                    <ng-template #disableButton>
+                        <a (click)="handleDisabledClick($event)" class="disabled-link">{{accommodation.number}}</a>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 sideBar" *ngIf="!sideToggle">
+            <h5 class="menu">Action Menu</h5>
+            <div class="row">
+                <div class="col-3">
+                    <a (click)="openCurrentActivityListPopup(bookedAccommodations)">Current Activity</a>
+                </div>
+                <div class="col-3">
+                    <a (click)="openWaitingListPopup()">View waiting list</a>
+                </div>
+                <div class="col-3">
+                    <a (click)="openOutOfServiceListPopup(outOfServiceAccommodations)">Out of Service List</a>
+                </div>
+                <!-- <div class="col-3">
+                    <a>Membership Sales</a>
+                </div> -->
+            </div>
+            <h5 class="menu">Problem and membership refund</h5>
+            <div class="row">
+                <div class="col-2">
+                    <a (click)="openSystemProblemPopup()">System Problem</a>
+                </div>
+                <!-- <div class="col-2">
+                    <a>Membership Refund</a>
+                </div> -->
+            </div>
+            <h5 class="menu">Cashier Menu</h5>
+            <div class="row">
+                <div class="col-2">
+                    <a (click)="openCashDropDrawerPopup()">Cash Drop Drawer Skims</a>
+                </div>
+                <div class="col-2">
+                    <a (click)="openEndOfShiftPopup()">End of Shift</a>
+                </div>
+                <!-- <div class="col-2">
+                    <a>Paid-ins/Paid-outs</a>
+                </div>
+                <div class="col-2">
+                    <a>Cashier Reports</a>
+                </div> -->
+            </div>
+            <h5 class="menu">Managers Menu</h5>
+            <div class="row">
+                <!-- <div class="col-2">
+                    <a>No sale</a>
+                </div>
+                <div class="col-2">
+                    <a>Reprint last receipt</a>
+                </div> -->
+                <div class="col-2">
+                    <a (click)="openLogOffPopup()">Log off</a>
+                </div>
+                <!-- <div class="col-2">
+                    <a>Managers Menu</a>
+                </div> -->
+            </div>
+            <!-- <div class="row">
+                <div class="col-2">
+                    <a>Reports</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-12">
+            <p>
+                <span class="border border-gray fItems">Status:</span>
+                <span class="fItems">Employee:</span><i class="text-info">{{currentUserName}}</i>
+                <span class="fItems">BussinessDay:</span><i class="text-danger">{{date}}</i>
+                <span class="fItems">Shift:</span><i class="text-info">{{shiftNumber}}</i>
+                <span class="fItems">Drawer:</span><i>{{drawerNumber}}</i>
+                <span class="fItems">Mode #:</span><i class="text-info">Online - Up To Date</i>
+            </p>
+        </div>
+    </div>
+</div>

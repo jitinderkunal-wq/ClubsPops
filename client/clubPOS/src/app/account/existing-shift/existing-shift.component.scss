@@ -1,0 +1,69 @@
+.model {
+    background-color: black;
+    width: 800px;
+    color: white;
+    padding: 0rem 2rem 0rem 2rem;
+    border: 1px solid var(--orange, #F67600);
+    box-shadow: 0px 0px 8px 0px rgb(253, 136, 2);
+
+    .header {
+        padding: 2rem 0rem 2rem 0rem;
+
+        b {
+            background-color: white;
+            padding: 1px 7px 1px 7px;
+            margin-right: 1rem;
+            cursor: pointer;
+            color: red;
+            font-size: 25px;
+        }
+
+        h4 {
+            color: white;
+        }
+
+        svg{
+            color: #F67600;
+            padding-right: 1rem;
+        }
+    }
+
+    .content {
+        background-color: #0E1227;
+        margin: 1rem 0rem 3rem 0rem;
+        padding: 1rem 1rem 1rem 1rem;
+        color: white;
+        text-align: center;
+
+        .existingBtn{
+            background-color:#31e907;
+            color: white;
+            border: 1px solid #21a704;
+            border-radius: .5rem;
+            margin: 0rem 1rem 0rem 0rem;
+            padding: 1rem;
+        }
+
+        .existingBtn:hover{
+            background-color: #1f9504;
+            border: 1px solid #2de304;
+        }
+
+        .newBtn{
+            background-color: #6262FA;
+            color: white;
+            border: 1px solid #4646c0;
+            border-radius: .5rem;
+            margin: 0rem 1rem 0rem 0rem;
+            padding: 1rem;
+        }
+
+        .newBtn:hover{
+            background-color: #4646c0;
+            border: 1px solid #6262FA;
+        }
+
+    }
+
+
+}

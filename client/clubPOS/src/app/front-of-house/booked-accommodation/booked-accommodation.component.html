@@ -1,0 +1,83 @@
+<div class="container-fluid booked">
+    <div class="row">
+        <div class="col-lg-8 left">
+            <div>
+                <a class="btn" routerLink="/accommodations">
+                    < Back</a>
+                        <a class="btn">Accommodation will Renew for next 6(hrs)</a>
+                        <a class="btn" (click)="openTransferAlertPopup()">Transfer Rules</a>
+                        <a class="btn" (click)="openWaitingListAlertPopup()">Waiting Rules</a>
+            </div>
+            <div>
+                <button type="button" *ngIf="rateHours - hoursOfStay <= 0" class="disabled">Refund</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay > 0" (click)="refundAmount()">Refund</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay <= 0" disabled class="disabled">Renew</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay > 0" (click)="renewBooking()">Renew</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay <= 0" disabled class="disabled">Transfer</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay > 0"
+                    (click)="openTransferPopup()">Transfer</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay <= 0" disabled class="disabled">Add to
+                    Waiting-List</button>
+                <button type="button" *ngIf="rateHours - hoursOfStay > 0" (click)="openAddToWaitingListPopup()">Add to
+                    Waiting-List</button>
+            </div>
+            <div class="comment">
+                <span class="d-block">Other Discount Reason</span>
+                <textarea name="" id="" placeholder="0000002-01: Booked - Single Room: #1 -6hrs"></textarea>
+                <span class="d-block">Comment</span>
+                <textarea name="" id="" placeholder="Comment will appear here">{{comment}}</textarea>
+            </div>
+        </div>
+        <div class="col-lg-4 right">
+            <div class="card checkout">
+                <div class="card-body">
+                    <h3 class="card-title">Check-Out</h3>
+                    <span class="card-text">{{accommodationType}}: #{{accommodationNumber}}</span>
+                    <h5>Accommodation type:</h5>
+                    <span class="card-text">{{hoursOfStay}} Hours</span>
+                    <h5>Hours of Stay: </h5>
+                    <table>
+                        <tr>
+                            <th>Check-In Time</th>
+                            <th>Check-Out Time (Current time)</th>
+                        </tr>
+                        <tr>
+                            <td>{{checkInTime}}</td>
+                            <td>{{checkOutTime}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card amount ps-0">
+                <div class="card-body">
+                    <h5 class="card-title">Amount Details</h5>
+                    <table>
+                        <tr>
+                            <td>Total Deposit Collected:</td>
+                            <td>Rs. {{totalDepositCollected}}</td>
+                        </tr>
+                        <tr>
+                            <td>Previous Deposits Transferred:</td>
+                            <td>Rs. {{depositsTransferred}}</td>
+                        </tr>
+                        <tr>
+                            <td>Deposits Returned:</td>
+                            <td>Rs. {{depositsReturned}}</td>
+                        </tr>
+                        <tr>
+                            <td>Deposits Balance:</td>
+                            <td>Rs. {{depositsBalance}}</td>
+                        </tr>
+                        <tr class="ttl">
+                            <td>Change Due :</td>
+                            <td>Rs. {{changeDue}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-success" (click)="completeCheckout()">Complete Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Other Discounts</h1>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-12">
+                <form action="" method="post">
+                    <div class="row">
+                        <span>Percentage %</span>
+                        <input type="text" placeholder="0.00%" [(ngModel)]="discountPercentage"
+                            [ngModelOptions]="{standalone: true}" (focus)="selectDiscountPercentage()">
+                    </div>
+                    <div class="row">
+                        <span>Dollar Amount $</span>
+                        <input type="text" placeholder="Rs. 0.00" [(ngModel)]="dollarAmount"
+                            [ngModelOptions]="{standalone: true}" (focus)="selectDollarAmount()">
+                    </div>
+                    <div class="row">
+                        <span>Other Discount Reason:</span>
+                        <textarea name="" id="" class="comment" cols="30" rows="10" [(ngModel)]="discountReason"
+                            [ngModelOptions]="{standalone: true}" placeholder="Type here..."></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer">
+                    <button type="button" class="btn" style="color: #F67600;background-color: black"
+                        (click)="closePopup()">Cancel</button>
+                    <button type="button" class="btn btn-warning" (click)="submitDiscount()">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container model">
+    <form [formGroup]="createSystemProblemForm" (ngSubmit)="onSubmit()">
+        <div class="col-12">
+            <div class="row header">
+                <div class="col-12">
+                    <h1 mat-dialog-title><b (click)="closePopup()">X</b>System Problem Comment</h1>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-12">
+                    <p>System Problem Explanation</p>
+                    <textarea type="text" formControlName="problemExplaination" matInput
+                        placeholder="Ex. Problem Explanation" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button type="button" class="btn" style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning" [disabled]="!createSystemProblemForm.get('problemExplaination')?.value">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

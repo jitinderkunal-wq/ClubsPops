@@ -1,0 +1,92 @@
+<div class="container-fluid main">
+    <div class="row header">
+        <div class="col-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1><img [src]="organizationLogo" alt="" />{{organizationName}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="row">
+                <div class="col-4 boxdiv">
+                    <p>Lockers in use - <b>{{lockersInUse}}/{{totalLockers}}</b></p>
+                </div>
+                <div class="col-4 boxdiv">
+                    <p>Rooms in use - <b>{{roomsInUse}}/{{totalRooms}}</b></p>
+                </div>
+                <div class="col-4 boxdiv">
+                    <p>Needs Maintenance - <b>{{needMaintenance}}/{{totalAccommodations}}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row header">
+        <div class="col-8">
+            <div class="booking">
+                {{selectedAccommodationInfo}}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <!-- <a class="btn" routerLink="/dashboard"><i class="fa fa-arrow-left"></i>Back</a> -->
+                    <a class="btn" (click)="sideMenuToggle()"><i class="fa fa-close"></i>Side Menu</a>
+                    <a class="btn" (click)="refresh()"><i class="fa fa-refresh"></i>Refresh</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row accommodationPage">
+        <div [ngClass]="sideToggle ? 'col-12 box' : 'col-10 box'">
+            <div class="row">
+                <div *ngFor="let accommodation of accommodations" [ngClass]="{
+                        'col-2 acmdNo': true,
+                        'in-use': accommodation.accommodationStatusId === 2,
+                        'needs-maintenance': accommodation.accommodationStatusId === 3,
+                        'needs-cleaning': accommodation.accommodationStatusId === 4
+                    }">
+                    <ng-container *ngIf="accommodation.accommodationStatusId === 3; else disableButton">
+                        <a (click)="openClearOutOfServicePopup(accommodation)"
+                            (mouseenter)="showAccommodationInfoNeedsMaintenance(accommodation)">
+                            {{accommodation.number}}
+                        </a>
+                    </ng-container>
+                    <ng-template #disableButton>
+                        <a (click)="handleDisabledClick($event)" class="disabled-link">
+                            {{accommodation.number}}
+                        </a>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 sideBar" *ngIf="!sideToggle">
+            <h5 class="menu">Action Menu</h5>
+            <!-- <div class="row">
+                <div class="col-3">
+                    <a>Current Activity</a>
+                </div>
+                <div class="col-3">
+                    <a>View waiting list</a>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-3">
+                    <a (click)="openOutOfServiceListPopup(outOfServiceAccommodations)">Out of Service List</a>
+                </div>
+            </div>
+            <h5 class="menu">Problem</h5>
+            <div class="row">
+                <div class="col-2">
+                    <a (click)="openSystemProblemPopup()">System Problem</a>
+                </div>
+            </div>
+            <h5 class="menu">Cashier Menu</h5>
+            <div class="row">
+                <div class="col-2" *ngIf="accountService.currentUser$ | async as user">
+                    <a (click)="accountService.logout()">Log Off</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

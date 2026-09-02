@@ -1,0 +1,20 @@
+.myCheckbox {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    input {
+        font-size: 1.5rem;
+        transform: scale(1.5);
+        border: 2px solid black;
+    }
+
+    input:checked {
+        background-color: black;
+        border-color: white;
+    }
+
+    input:not(:checked) {
+        background-color: white;
+        border-color: black;
+    }
+}

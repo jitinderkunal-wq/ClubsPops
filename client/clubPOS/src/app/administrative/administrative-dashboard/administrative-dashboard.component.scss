@@ -1,0 +1,342 @@
+.main {
+    background-color: black;
+    height: 100%;
+
+    .left {
+
+        .administrative {
+            background-color: #1c244d;
+            // width: 600px;
+            // height: 75%;
+            margin: 1rem 0rem 0rem 0rem;
+            padding: 1rem 0rem 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            color: white;
+
+
+            button {
+                height: 90px;
+                width: 177px;
+                background-color: #0E1227;
+                border: 1px solid #F67600;
+                color: white;
+                justify-content: space-between;
+                // padding: 2rem 3.5rem 2rem 3.5rem;
+                margin: 1rem 1rem 0rem 0rem;
+            }
+
+            button:hover {
+                background-color: #565d6c;
+                color: white;
+            }
+        }
+
+        .staff {
+            margin: 1rem 0rem 0rem 0rem;
+            padding: 1rem 0rem 1rem 1rem;
+            // width: 600px;
+            display: flex;
+            flex-direction: column;
+            color: rgb(209, 207, 207);
+            border: 1px solid gray;
+
+            table {
+                width: 100%;
+
+                td {
+                    padding: 0rem 0rem 0rem 0rem;
+                    margin-top: 1rem;
+                }
+    
+            }
+        }
+        .btns{
+            margin: .2rem 0rem 0rem 0rem;
+            padding: 1rem 0rem 1rem 0rem;
+            // width: 600px;
+            display: flex;
+            flex-direction: column;
+            color: rgb(209, 207, 207);
+
+            button {
+                background-color: #F67600;
+                padding: .7rem 1.5rem .7rem 1.5rem;
+                margin: .2rem 0rem 0rem 0rem;
+                color: white;
+            }
+            button:hover {
+                background-color: #723700;
+                color: white;
+            }
+            a {
+                background-color: rgb(122, 122, 122);
+                padding: 0rem 1.5rem 0rem 1.5rem;
+                margin-right: 1rem;
+                cursor: pointer;
+                color: white;
+                font-size: 36px;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    .middle {
+        margin: 1rem 0rem 0rem 0rem;
+        padding: 1rem 0rem 1rem 1rem;
+        // width: 600px;
+        display: flex;
+        flex-direction: column;
+        color: rgb(209, 207, 207);
+        border: 1px solid gray;
+
+
+        table {
+
+            td {
+                // padding: .5rem 0rem 0rem 1rem;
+                margin-top: 1rem;
+            }
+
+        }
+    }
+
+    .right {
+        margin: 1rem 0rem 0rem 0rem;
+        // padding: 0rem 0rem 0rem 0rem;
+        // width: 600px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        .maintenance {
+            background-color: black;
+            // width: 550px;
+            color: rgb(209, 207, 207);
+            border: 1px solid gray;
+            // padding-left: 1rem;
+
+            button {
+                height: 90px;
+                width: 165px;
+                background-color: #0E1227;
+                border: 1px solid gray;
+                color: white;
+                justify-content: space-between;
+                // padding: 2rem 3rem 2rem 3rem;
+                margin: 1rem 1rem 0rem 0rem;
+            }
+
+            button:hover {
+                background-color: #565d6c;
+                color: white;
+            }
+        }
+
+        .accommodations {
+            margin: 1rem 0rem 0rem 0rem;
+            background-color: black;
+            // width: 550px;
+            color: rgb(209, 207, 207);
+            border: 1px solid gray;
+
+            table {
+                width: 100%;
+
+                td {
+                    padding: 0rem 0rem 0rem 0rem;
+                    margin-top: 1rem;
+                }
+
+            }
+        }
+
+        .bar {
+            margin: 1rem 0rem 0rem 0rem;
+            background-color: black;
+            // width: 550px;
+            color: rgb(209, 207, 207);
+            border: 1px solid gray;
+
+            table {
+                width: 100%;
+
+                td {
+                    padding: 0rem 0rem 0rem 0rem;
+                    margin-top: 1rem;
+                }
+
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1920px) {
+
+    .main {
+        .left .administrative button {
+            height: 86px;
+            width: 137px;
+            margin: 0.5rem 0.5rem 0rem 0rem;
+        }
+        
+          
+    }
+}
+
+@media (max-width: 1700px) {
+    .main {
+        .left .administrative button {
+            height: 60px;
+        font-size: 12px;
+        padding: 6px 6px;
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .heading-title {
+            font-size: 18px;
+        }
+        .right .maintenance button{
+            height: 70px;
+            margin: 0.5rem 1rem 0rem 0rem;
+        }
+    }
+}
+
+@media (max-width: 1600px) {
+    .main {
+        .left {
+            .administrative button {
+                height: 50px;
+            width: 120px;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            .staff table {
+                font-size: 12px;
+            }
+        }
+        .heading-title {
+            font-size: 16px;
+        }
+        .middle table {
+            font-size: 12px;
+        }
+        .right {
+            .maintenance button{
+                height: 46px;
+               font-size: 12px;
+            }
+            table {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .main {
+        .left {
+            .administrative button {
+                height: 46px;
+            width: 92px;
+            font-size: 10px;
+            }
+            .btns {
+                padding: 0.5rem 0rem 0.5rem 0rem;
+                a {
+                    padding: 0rem 1rem 0rem 1rem;
+                    font-size: 22px;
+                }
+                button {
+                    padding: 0.4rem 0.5rem 0.5rem 0.5rem;
+                    margin: 0rem 0rem 0rem 0rem;
+                    font-size: 12px;
+                }
+            }
+        }
+        .heading-title {
+            font-size: 12px;
+        }
+        .right {
+            .maintenance button{
+                height: 38px;
+               width: 130px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024.98px) {
+    .main {
+        .left {
+            .administrative button {
+                height: 58px;
+            }   
+        }
+    }
+}
+
+
+@media (max-width: 992px) {
+    .main {
+        .left {
+            .administrative button {
+                height: 60px;
+            width: 88px;
+            font-size: 10px;
+            }
+        }
+        .right {
+            .maintenance button{
+               width: 120px;
+               padding: 6px 6px;
+            }
+        }
+    }
+}
+
+@media (max-width: 769px) {
+    .main {
+        .right .bar{
+            margin: 1rem 0rem 1rem 0rem;
+        }
+        .left {
+            width: 50%;
+        }
+        .center {
+            width: 50%;
+        }
+        .right {
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+@media (max-width: 576px) {
+
+    /* Small devices (up to 576px) */
+    .col-8.left-section,
+    .col-4.right-section {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .main {
+        .left {
+            width: 100%;
+        }
+        .center {
+            width: 100%;
+        }
+    }
+}

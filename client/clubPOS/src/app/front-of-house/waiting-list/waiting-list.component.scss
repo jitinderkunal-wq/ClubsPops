@@ -1,0 +1,108 @@
+.model {
+    background-color: black;
+    width: 100%;
+    min-height: 400px;
+    color: white;
+    padding: 0rem 1rem 0rem 1rem;
+    border: 1px solid var(--orange, #F67600);
+    box-shadow: 0px 0px 8px 0px rgb(253, 136, 2);
+
+    .header {
+        padding: 2rem 0rem 2rem 0rem;
+
+        h1 {
+            color: white;
+        }
+        b {
+            background-color: white;
+            padding: 1px 7px 1px 7px;
+            margin-right: 1rem;
+            cursor: pointer;
+            color: red;
+            font-size: 25px;
+        }
+        .btn {
+            background-color: #F67600;
+            color: white;
+            margin: 1rem 0rem 0rem 1rem;
+            float: right;
+        }
+
+        .btn2 {
+            background-color: #00B300;
+            color: white;
+            margin: 1rem 0rem 0rem 1rem;
+            float: right;
+        }
+
+        .btn1 {
+            background-color: #6262FA;
+            color: white;
+            margin: 1rem 0rem 0rem 1rem;
+            float: right;
+        }
+    }
+
+    .content {
+
+        table {
+            overflow: hidden;
+            border-bottom: 1px solid gray;
+
+            thead {
+                tr {
+                    padding: 2rem 1rem 2rem 1rem;
+                }
+
+                th {
+                    background-color: #0E1227;
+                    padding: 1rem 1rem 1rem 1rem;
+                }
+            }
+
+            tbody {
+
+                td {
+                    padding: .5rem 0rem .5rem 1rem;
+                    white-space: nowrap; 
+                    max-width: 200px;
+                    overflow:hidden;
+                }
+
+                .selected {
+                    background-color: white;
+                    color: black;
+                }
+
+                .deselected  {
+                    background-color: black;
+                    color: white;
+                }
+            }
+
+        }
+    }
+
+    .footer {
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        color: #F67600;
+        float: right;
+        padding: 1rem 0rem 1rem 0rem;
+        margin-top: 3rem;
+
+        .btn {
+            background-color: #F67600;
+            color: white;
+            display: inline-flex;
+            padding: 14px 30px;
+            margin-left: 1rem;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--orange, #F67600);
+        }
+    }
+}

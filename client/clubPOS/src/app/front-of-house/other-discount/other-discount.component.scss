@@ -1,0 +1,79 @@
+.model {
+    background-color: black;
+    width: 600px;
+    min-height: 300px;
+    color: white;
+    padding: 0rem 1rem 0rem 1rem;
+    border: 1px solid var(--orange, #F67600);
+    box-shadow: 0px 0px 8px 0px rgb(253, 136, 2);
+
+    .header {
+        padding: 2rem 0rem 2rem 0rem;
+
+        h1 {
+            color: white;
+        }
+
+        b {
+            background-color: white;
+            padding: 1px 7px 1px 7px;
+            margin-right: 1rem;
+            cursor: pointer;
+            color: red;
+            font-size: 25px;
+        }
+    }
+
+    .content {
+        .row {
+            margin: 0rem 1rem 1rem 1rem;
+
+            span{
+                color:#A8A5A5;
+            }
+            input {
+                height: 20px;
+                width: 100%;
+                background-color: #0E1227;
+                color: white;
+                padding: 1.5rem;
+                margin: 1rem 0rem 0rem 0rem;
+
+                option{
+                    color: white;
+                }
+            }
+            .comment{
+                height: 100px;
+                background-color: #0E1227;
+                color: white;
+                resize: none;
+                margin: 1rem 0rem 0rem 0rem;
+
+            }
+        }
+    }
+
+    .footer {
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        color: #F67600;
+        float: right;
+        padding: 1rem 0rem 1rem 0rem;
+        margin-top: 1rem;
+
+        .btn {
+            background-color: #F67600;
+            color: white;
+            display: inline-flex;
+            padding: 14px 30px;
+            margin-left: 1rem;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--orange, #F67600);
+        }
+    }
+}

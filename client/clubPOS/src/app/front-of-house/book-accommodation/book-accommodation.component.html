@@ -1,0 +1,278 @@
+<div class="container-fluid booking" *ngIf="accommodation">
+    <div class="row">
+        <div class="col-12 header">
+            <div class="col-md-5">
+                <h1><img [src]="organizationLogo" alt="" />{{organizationName}}</h1>
+            </div>
+            <div class="col-7 wldiv">
+                <div class="d-flex align-items-center justify-content-end">
+                    <span><b>Note:</b> Book Accommodation first to add in Waiting List</span>
+                    <div>
+                        <button type="button" class="btn bt" (click)="openOutOfServicePopup()">Out of Service</button>
+                        <button type="button" class="btn bt" routerLink="/accommodations">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-5 left">
+            <div class="card checkin">
+                <div class="card-body">
+                    <h3 class="card-title">Check-In</h3>
+                    <span class="card-text">#{{accommodationNumber}}: {{accommodationTypeName}}</span>
+                    <h5>Accommodation type:</h5>
+                    <span class="card-text"> 6 hours</span>
+                    <h5>Hours of Stay:</h5>
+                    <table>
+                        <tr>
+                            <th>Check-In Time (Current time)</th>
+                            <th>Check-Out Time</th>
+                        </tr>
+                        <tr>
+                            <td>{{checkinTime | date:'medium'}}</td>
+                            <td>{{checkoutTime | date:'medium'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5>Rates:</h5>
+                    <p>Weekly Standard {{accommodationTypeName}} - 6hrs, $ {{totalAmount}} @ {{checkinTime | date:'EEE
+                        h:mm a'}}</p>
+                    <h5 class="card-title">Comments</h5>
+                    <textarea rows="4" cols="50" [formControl]="bookingForm.controls['comment']"
+                        placeholder="Check-In : Mon 11:04AM - Check-Out : Mon 7:04PM"></textarea>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-4 middle">
+            <div class="row">
+                <div class="col-12 concessions">
+                    <h4>Concessions</h4>
+                    <div class="col-12">
+                        <button type="button" class="btn" (click)="openPromosCouponsPopup()"
+                            [disabled]="couponId > 0 || promopassId > 0 || otherDiscountDollar > 0">Promo/Coupons</button>
+                        <button type="button" class="btn" (click)="openOtherDiscountPopup()"
+                            [disabled]="couponId > 0 || promopassId > 0 || otherDiscountDollar > 0">Other
+                            Discounts</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 currencypayments">
+                    <button type="button" [class]="usTendered?'active':''" (click)="usFunction()">US $ <br> &#8377;
+                        {{usTendered}}</button>
+                    <button type="button" [class]="euroTendered?'active':''" (click)="euroFunction()">Euro &euro; <br>
+                        &#8377; {{euroTendered}}</button>
+                    <button type="button" [class]="discoverTendered?'active':''" (click)="discoverFunction()">Discover
+                        <br> &#8377; {{discoverTendered}}</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-7 numkeys">
+                    <div style="    display: flex;
+                        flex-wrap: wrap;">
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('7')"> 7 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('8')"> 8 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('9')"> 9 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('4')"> 4 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('5')"> 5 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('6')"> 6 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('1')"> 1 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('2')"> 2 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('3')"> 3 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('0')"> 0 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clickedNumber('00')"> 00 </button>
+                        </div>
+                        <div class="number">
+                            <button type="button" class="key" (click)="clear()"> Clr </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-5 payments">
+                    <button type="button" [class]="amexTendered?'active':'btn'" (click)="amexFunction()">Amex <br>
+                        &#8377; {{amexTendered}}</button>
+                    <button type="button" [class]="masterTendered?'active':'btn'" (click)="masterFunction()">Master Card
+                        <br> &#8377; {{masterTendered}}</button>
+                    <button type="button" [class]="visaTendered?'active':'btn'" (click)="visaFunction()">Visa <br>
+                        &#8377; {{visaTendered}}</button>
+                    <button type="button" [class]="debitTendered?'active':'btn'" (click)="debitFunction()">Debit <br>
+                        &#8377; {{debitTendered}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 right">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Amount Details</h4>
+                    <app-text-input [formControl]="bookingForm.controls['taxes']" [type]="'number'"
+                        [label]="'Taxes (Included)'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input [formControl]="bookingForm.controls['rateTotal']" [type]="'number'"
+                        [label]="'Rate Total'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input [formControl]="bookingForm.controls['rateDiscount']" [type]="'number'"
+                        [label]="'Rate Discount'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input [formControl]="bookingForm.controls['totalDiscount']" [type]="'number'"
+                        [label]="'Total Discount'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input [formControl]="bookingForm.controls['netAmount']" [type]="'number'"
+                        [label]="'Net Amount'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input [formControl]="bookingForm.controls['totalDeposits']" [type]="'number'"
+                        [label]="'Total Deposits'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input [formControl]="bookingForm.controls['total']" [type]="'number'" [label]="'Total'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="discoverTendered" [formControl]="bookingForm.controls['discoveryCard']"
+                        [type]="'number'" (valueChange)="calculateDueAmount" [label]="'Discovery Card Tendered'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="amexTendered" [formControl]="bookingForm.controls['amex']" [type]="'number'"
+                        (valueChange)="calculateDueAmount" [label]="'Amex Tendered'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="masterTendered" [formControl]="bookingForm.controls['masterCard']"
+                        [type]="'number'" (valueChange)="calculateDueAmount" [label]="'Master Card Tendered'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="visaTendered" [formControl]="bookingForm.controls['visa']" [type]="'number'"
+                        (valueChange)="calculateDueAmount" [label]="'Visa Tendered'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="debitTendered" [formControl]="bookingForm.controls['debit']"
+                        [type]="'number'" (valueChange)="calculateDueAmount" value="inputValue"
+                        [label]="'Debit Tendered'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="usTendered" [formControl]="bookingForm.controls['us']" [type]="'number'"
+                        [label]="'Us $'" (valueChange)="calculateDueAmount"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <app-text-input *ngIf="euroTendered" [formControl]="bookingForm.controls['euro']" [type]="'number'"
+                        [label]="'Euro $'" (valueChange)="calculateDueAmount"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                    <div class="d-flex justify-content-between tender-input">
+                        <span><b>Tendered</b></span>
+                        <input [formControl]="bookingForm.controls['tendered']" [type]="'number'"
+                            value="{{tenderedValue === null ? '' : tenderedValue}}" />
+
+                    </div>
+                    <app-text-input [formControl]="bookingForm.controls['amountDue']" [type]="'number'"
+                        [label]="'Amount Due'"
+                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center', 'font-size':'1.2rem', 'margin':'0.5rem 1rem 0rem 0rem'}"></app-text-input>
+                </div>
+                <!-- <div class="col-12">
+                        <h4>Amount Details</h4>
+                        <app-table-row-with-input [formControl]="bookingForm.controls['taxes']" [type]="'number'"
+                                [label]="'Taxes (Included)'" [customStyles]="{'margin-right':'3rem'}"></app-table-row-with-input>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['rateTotal']" [type]="'number'"
+                                [label]="'Rate Total'"></app-table-row-with-input>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['rateDiscount']" [type]="'number'"
+                                [label]="'Rate Discount'"></app-table-row-with-input>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['totalDiscount']"
+                                [type]="'number'" [label]="'Total Discount'"></app-table-row-with-input>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['netAmount']" [type]="'number'"
+                                [label]="'Net Amount'"></app-table-row-with-input>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['totalDeposits']"
+                                [type]="'number'" [label]="'Total Deposits'"></app-table-row-with-input>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['total']" [type]="'number'"
+                                [label]="'Total'"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="discoverTendered"
+                                [formControl]="bookingForm.controls['discoveryCard']" [type]="'number'"
+                                [valueChangeFunction]="calculateDueAmount"
+                                [label]="'Discovery Card Tendered'"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="amexTendered" [formControl]="bookingForm.controls['amex']"
+                                [type]="'number'" [valueChangeFunction]="calculateDueAmount"
+                                [label]="'Amex Tendered'"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="masterTendered"
+                                [formControl]="bookingForm.controls['masterCard']" [type]="'number'"
+                                [valueChangeFunction]="calculateDueAmount"
+                                [label]="'Master Card Tendered'"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="visaTendered" [formControl]="bookingForm.controls['visa']"
+                                [type]="'number'" [valueChangeFunction]="calculateDueAmount"
+                                [label]="'Visa Tendered'"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="debitTendered" [formControl]="bookingForm.controls['debit']"
+                                [type]="'number'" [valueChangeFunction]="calculateDueAmount" value="inputValue"
+                                [label]="'Debit Tendered'"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="usTendered" [formControl]="bookingForm.controls['us']"
+                                [type]="'number'" [label]="'Us $'"
+                                [valueChangeFunction]="calculateDueAmount"></app-table-row-with-input>
+                            <app-table-row-with-input *ngIf="euroTendered" [formControl]="bookingForm.controls['euro']"
+                                [type]="'number'" [label]="'Euro $'"
+                                [valueChangeFunction]="calculateDueAmount"></app-table-row-with-input>
+                            <tr>
+                                <td>Tendered</td>
+                                <td>
+                                    <input [formControl]="bookingForm.controls['tendered']" [type]="'number'"
+                                        value="{{tenderedValue === null ? '' : tenderedValue}}" />
+                                </td>
+                            </tr>
+                            <app-table-row-with-input [formControl]="bookingForm.controls['amountDue']" [type]="'number'"
+                                [label]="'Amount Due'"></app-table-row-with-input>
+                    </div> -->
+                <div class="col-12">
+                    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+                        <button type="submit" class="btn">Submit /
+                            Print</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div class="row">
+                <div class="col-12">
+                    <div class="card checkin">
+                        <div class="card-body">
+                            <h3 class="card-title">Check-In</h3>
+                            <span class="card-text">#{{accommodationNumber}}: {{accommodationTypeName}}</span>
+                            <h5>Accommodation type:</h5>
+                            <span class="card-text"> 6 hours</span>
+                            <h5>Hours of Stay:</h5>
+                            <table>
+                                <tr>
+                                    <th>Check-In Time (Current time)</th>
+                                    <th>Check-Out Time</th>
+                                </tr>
+                                <tr>
+                                    <td>{{checkinTime | date:'medium'}}</td>
+                                    <td>{{checkoutTime | date:'medium'}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+    <div class="row footer">
+        <div class="col-12">
+            <p>
+                <span class="fItems">Status:</span><i class="text-warning">Check-In</i>
+                <span class="fItems">Employee:</span><i class="text-info">{{currentUserName}}</i>
+            </p>
+        </div>
+    </div>
+</div>

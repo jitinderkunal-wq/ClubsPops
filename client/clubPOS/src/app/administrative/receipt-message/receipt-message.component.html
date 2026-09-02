@@ -1,0 +1,38 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Receipt Messages</h4>
+            </div>
+        </div>
+        <form [formGroup]="receiptMessagesAndCouponForm" (ngSubmit)="onSubmit()">
+            <div class="row content">
+                <div class="col-12">
+                    <div class="row">
+                        <app-text-area [formControl]="receiptMessagesAndCouponForm.controls['address']"
+                            [label]="'Address'" [rows]="1"></app-text-area>
+                        <app-text-input [formControl]="receiptMessagesAndCouponForm.controls['gstNumber']"
+                            [label]="'GST #'"></app-text-input>
+                        <app-text-area [formControl]="receiptMessagesAndCouponForm.controls['disclaimer']"
+                            [label]="'Disclaimer'" [rows]="2"></app-text-area>
+                        <app-text-input [formControl]="receiptMessagesAndCouponForm.controls['message1']"
+                            [label]="'Message-1'"></app-text-input>
+                        <app-text-input [formControl]="receiptMessagesAndCouponForm.controls['message2']"
+                            [label]="'Message-2'"></app-text-input>
+                        <app-text-input [formControl]="receiptMessagesAndCouponForm.controls['couponText']"
+                            [label]="'Coupon Text'"></app-text-input>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button type="button" class="btn" style="color: #F67600;background-color: black"
+                            (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

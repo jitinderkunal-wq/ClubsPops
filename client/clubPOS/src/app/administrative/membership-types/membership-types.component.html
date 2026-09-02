@@ -1,0 +1,74 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Membership Types Setup</h4>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+        <form [formGroup]="membershipTypeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="membershipTypeForm.controls['membershipTypeId']"
+                        [options]="membershipTypes" label="Select Membership Type" [valueProperty]="'membershipTypeId'"
+                        [labelProperty]="'membershipTypeName'" (valueChange)="onMembershipTypeChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <app-text-input [formControl]="membershipTypeForm.controls['membershipTypeName']"
+                                [label]="'Membership Type Name'"></app-text-input>
+                            <app-text-input [formControl]="membershipTypeForm.controls['discountAmount']"
+                                [type]="'number'" [label]="'Discount Amount'"></app-text-input>
+                            <app-text-input [formControl]="membershipTypeForm.controls['displayOrder']"
+                                [type]="'number'" [label]="'Display Order'"></app-text-input>
+                            <div class="row">
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="membershipTypeForm.controls['depositRequired']"
+                                        [label]="'Deposit Required'"></app-checkbox>
+                                </div>
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="membershipTypeForm.controls['canReserve']"
+                                        [label]="'Can Reserve'"></app-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <app-text-input [formControl]="membershipTypeForm.controls['discountFactor']"
+                                [type]="'number'" [label]="'Discount Factor'"></app-text-input>
+                            <app-text-input [formControl]="membershipTypeForm.controls['memberShipPrice']"
+                                [type]="'number'" [label]="'Membership Price'"></app-text-input>
+                            <div class="row">
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="membershipTypeForm.controls['canTab']"
+                                        [label]="'Can Tab'"></app-checkbox>
+                                </div>
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="membershipTypeForm.controls['isActive']"
+                                        [label]="'Is Active'"></app-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

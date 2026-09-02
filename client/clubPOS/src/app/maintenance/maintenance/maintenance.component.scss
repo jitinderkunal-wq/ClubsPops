@@ -1,0 +1,183 @@
+.main {
+    background-color: #00020d;
+    min-height: 100%;
+}
+
+.header {
+    color: white;
+    width: 100%;
+    height: auto;
+    padding: 1rem 0rem 0rem 0rem;
+
+    img{
+        margin: 0rem 1rem 0rem 2rem;
+        height: 3rem;
+        width: 4rem;
+    }
+    
+    .dropD {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        span {
+            color: gray;
+        }
+
+        .drp {
+            background-color: #0E1227;
+            color: gray;
+        }
+    }
+
+    .boxdiv p {
+        background-color: white;
+        color: #00020d;
+        text-align: center;
+        padding: 6px;
+    }
+
+    .btn {
+        background: #F67600;
+        color: white;
+        border-radius: 10px;
+        padding: 7px 27px 7px 27px;
+        margin-left: 20px;
+        float: right;
+    }
+
+    i {
+        padding-right: 5px;
+    }
+
+    .booking {
+        min-height: 50px;
+        border: 1px solid gray;
+        color: white;
+        padding: 3px;
+        font-size: small;
+    }
+}
+
+.accommodationPage {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    .box {
+        background-color: #00020d;
+        color: white;
+        text-align: center;
+
+        .acmdNo {
+            background-color: #507850;
+            height: 6rem;
+            width: 6rem;
+            margin: 0.3rem;
+            transition: background-color 0.3s ease;
+            padding: 0;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+                color: white;
+                font-size: 1.2rem;
+            }
+
+            .disabled-link {
+                color: #ccc;
+                cursor: not-allowed;
+                pointer-events: none;
+            }
+        }
+
+        .in-use {
+            background-color: #785050;
+            pointer-events: none;
+        }
+
+        .needs-maintenance {
+            background-color: #6262fa;
+        }
+
+        .needs-maintenance:hover {
+            background-color: #13135e;
+        }
+
+        .needs-cleaning {
+            background-color: #787850;
+            pointer-events: none;
+        }
+    }
+
+    .menu {
+        color: #F67600;
+    }
+
+    .sideBar {
+        height: 100%;
+        background-color: #0E1227;
+        padding: 1rem 0rem 0rem 1rem;
+    }
+
+    .sideBar .row {
+        margin-bottom: 1rem;
+    }
+
+    .sideBar div div {
+        background-color: #0E1227;
+        color: white;
+        border: 1px solid #F67600;
+        font-size: 0.8rem;
+        border-radius: 10px;
+        height: 5rem;
+        width: 8.9rem;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .sideBar div div:hover {
+        background-color: #00020d;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1024.98px) {
+    .header {
+        img {
+            height: 2rem;
+            width: 2rem;
+        }
+        h1 {
+            font-size: 22px;
+        }  
+        .boxdiv p {
+            margin-top: 0;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+        .header .booking {
+            min-height: 40px;
+        }
+        .btn {
+            border-radius: 4px;
+            padding: 4px 20px 3px 20px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+    }
+    .accommodationPage {
+        .box .acmdNo {
+            height: 4rem;
+            width: 4rem;
+        }
+    }  
+}

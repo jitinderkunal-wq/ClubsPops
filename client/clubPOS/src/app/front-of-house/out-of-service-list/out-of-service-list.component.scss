@@ -1,0 +1,86 @@
+.model {
+    background-color: black;
+    width: 800px;
+    min-height: 500px;
+    color: white;
+    border: 1px solid var(--orange, #F67600);
+    box-shadow: 0px 0px 8px 0px rgb(253, 136, 2);
+
+    .header {
+        padding: 2rem 1rem 2rem 0rem;
+
+        b {
+            background-color: white;
+            padding: 1px 7px 1px 7px;
+            margin-right: 1rem;
+            cursor: pointer;
+            color: red;
+            font-size: 25px;
+        }
+
+        h1 {
+            color: white;
+        }
+        p{
+            padding: 1.5rem 1rem 2rem 0rem;
+            color: whitesmoke;
+            font-size: small;
+        }
+    }
+
+    .content {
+
+        table {
+            overflow: hidden;
+            width: 100%;
+            
+            thead {
+                tr {
+                    padding: 2rem 0rem 2rem 1rem;
+                }
+
+                th {
+                    background-color: #0E1227;
+                    padding: 1rem 0rem 1rem 1rem;
+                }
+            }
+
+            tbody {
+                border-bottom: 1px solid gray;
+
+                td {
+                    padding: .5rem 0rem .5rem 1rem;
+                }
+                tr:hover {
+                    background-color: white;
+                    color: black;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+
+    .footer {
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            color: #F67600;
+            padding-top: 1rem;
+            float: right;
+            padding-top: 1rem;
+
+            .btn {
+                background-color: #F67600;
+                color: white;
+                display: inline-flex;
+                padding: 14px 30px;
+                margin-left: 1rem;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                border-radius: 6px;
+                border: 1px solid var(--orange, #F67600);
+            }
+    }
+}

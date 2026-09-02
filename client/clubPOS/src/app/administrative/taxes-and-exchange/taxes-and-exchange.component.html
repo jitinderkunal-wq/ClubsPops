@@ -1,0 +1,35 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Tax and Exchange Rates Popup</h4>
+            </div>
+        </div>
+        <form [formGroup]="taxAndExchangeForm" (ngSubmit)="onSubmit()">
+            <div class="row content">
+                <div class="col-12">
+                    <div class="row">
+                        <span>GST Rate %</span>
+                        <input type="number" [formControl]="taxAndExchangeForm.controls['gst']" placeholder="Enter here" />
+                        <span>HST Rate %</span>
+                        <input type="number" [formControl]="taxAndExchangeForm.controls['hst']" placeholder="Enter" />
+                        <span>US Exchange Rate</span>
+                        <input type="number" [formControl]="taxAndExchangeForm.controls['us']" placeholder="Enter here" />
+                        <span>Euro Exchange Rate</span>
+                        <input type="number" [formControl]="taxAndExchangeForm.controls['euro']" placeholder="Enter here" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button type="button" class="btn" style="color: #F67600;background-color: black"
+                            (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

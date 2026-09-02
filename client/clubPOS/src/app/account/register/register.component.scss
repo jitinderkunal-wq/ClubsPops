@@ -1,0 +1,83 @@
+.register {
+    background-color: black;
+    height: 100%;
+    color: white;
+    padding: 1rem 1rem 1rem 1rem;
+
+    .header {
+        padding: 0rem 2rem 0rem 2rem;
+
+        .btn {
+            background: #F67600;
+            color: white;
+            border-radius: 10px;
+            padding: 7px 27px 7px 27px;
+            margin-left: 20px;
+            float: right;
+        }
+        a {
+            background-color: rgb(122, 122, 122);
+            padding: 0rem .5rem 0rem .5rem;
+            margin-right: 1rem;
+            cursor: pointer;
+            color: white;
+            font-size: 36px;
+            text-decoration: none;
+        }
+        .note{
+            border: 1px solid #F67600;
+            padding: .7rem;
+        }
+    }
+
+    .content {
+        margin: 1rem 1rem 1rem 1rem;
+
+        .drp {
+            height: 60px;
+            width: 100%;
+            background-color: #0E1227;
+            color: gray;
+            padding: 1rem;
+            margin: .5rem 0rem 0rem 0rem;
+        }
+
+        span {
+            color: #A8A5A5;
+            padding-top: 1rem;
+
+        }
+
+        input {
+            height: 60px;
+            width: 100%;
+            background-color: #0E1227;
+            color: white;
+            padding: 1rem;
+            margin: .5rem 0rem 0rem 0rem;
+        }
+    }
+
+    .footer {
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        color: #F67600;
+        float: right;
+        padding: 1rem 2rem 1rem 0rem;
+        margin-top: 0rem;
+
+        .btn {
+            background-color: #F67600;
+            color: white;
+            display: inline-flex;
+            padding: 14px 30px;
+            margin-left: 1rem;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--orange, #F67600);
+        }
+    }
+}

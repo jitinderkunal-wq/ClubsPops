@@ -1,0 +1,71 @@
+.dashboard {
+    background-image: url('/clubPOS/src/assets/img/overlay.jpg');
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+  
+    .header{
+  
+      .label {
+        font-style: normal;
+        font-size: 3rem;
+        text-align: center;
+        color: #FFFFFF;
+        padding-top: 4rem;
+      }
+  
+      .logoutbtn{
+        float: right;
+  
+        button{
+          background: #F67600;
+          color: white;
+          margin: 1rem .5rem 1rem .5rem;
+          padding: .5rem .5rem .5rem .5rem;
+          font-size: 1.3rem;
+        }
+        button:hover{
+          background-color: #ce6503;
+        }
+      }
+    }
+  
+    
+  
+    .cards {
+      display: flex;
+      justify-content: center;
+      padding-top: 4rem;
+  
+      .card {
+        background-color: white;
+        text-align: center;
+        padding-top: 1rem;
+        margin: 8px;
+        margin-top: 14px;
+        width: 30% !important;
+        border-radius: 10px;
+        height: 12rem;
+  
+        a {
+          text-decoration: none;
+          color: #444444;
+  
+          img {
+            width: 170px;
+            height: 100px;
+          }
+  
+          p {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  
+  .not-loged-in {
+    color: white;
+  }

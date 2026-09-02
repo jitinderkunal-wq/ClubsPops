@@ -1,0 +1,31 @@
+<div class="container-fluid dashboard" *ngIf="currentUser">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <h1 class="label">Choose Section</h1>
+            </div>
+            <div class="col-4">
+                <div class="row logoutbtn">
+                    <div class="col-md-12" style="text-align: center;" *ngIf="accountService.currentUser$ | async as user">
+                        <button (click)="accountService.logout()" class="fa fa-sign-out" aria-hidden="true">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row cards">
+        <div class="col-4 card">                                                                        <!-- *ngIf="currentUser.roles.includes('FrontCash')" -->
+            <a (click)="openOrganization()">
+                <img src="../../assets/img/organization.jpg">
+                <p>Organization</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="not-loged-in" *ngIf="currentUser == null">
+    <p>You need to login</p>
+</div>

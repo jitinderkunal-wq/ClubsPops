@@ -1,0 +1,242 @@
+.cashier {
+    background-color: black;
+    min-height: 100%;
+
+    .header {
+        background-color: #00020d;
+        float: right;
+        margin: 1.5rem 0rem 0rem 0rem;
+        display: flex;
+        justify-content: space-between;
+
+        .back {
+
+            h2{
+                color: white;
+            }
+            
+            a {
+                background-color: rgb(122, 122, 122);
+                padding: 0rem 1.5rem 0rem 1.5rem;
+                margin-right: 1rem;
+                cursor: pointer;
+                color: white;
+                font-size: 36px;
+                text-decoration: none;
+            }
+        }
+
+        .shift {
+            height: 42px;
+            color: white;
+            margin: .1rem 0rem 0rem 0rem;
+            padding: .5rem 1rem .5rem 1rem;
+            border: 1px solid #F67600;
+            b {
+                font-size: larger;
+                color: rgb(202, 194, 194);
+            }
+
+            i{
+                color: #F67600;
+                margin: 0rem 1rem 0rem .1rem;
+            }
+        }
+
+        .btns {
+            float: right;
+
+            .printBtn {
+                background-color: #F67600;
+                color: white;
+                margin-left: 1rem;
+                padding: .5rem 1rem .5rem 1rem;
+                border: 1px solid #F67600;
+                border-radius: 7%;
+
+            }
+
+            .btn {
+                background-color: #07f32e;
+                color: white;
+                margin-left: 1rem;
+                padding: .5rem 1rem .5rem 1rem;
+                border: 1px solid #07f32e;
+                border-radius: 10%;
+            }
+
+            .printBtn:hover {
+                background-color: #723700;
+                border: 1px solid #723700;
+                color: white;
+            }
+
+            .btn:hover {
+                background-color: #177200;
+                border: 1px solid #177200;
+                color: white;
+            }
+        }
+    }
+
+    .left {
+        margin: 0rem 0rem 0rem 0rem;
+        padding: 1rem 0rem 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        .accomodations {
+            background-color: black;
+            width: 95%;
+            color: rgb(209, 207, 207);
+            border: 1px solid gray;
+            margin: 0rem 0rem 1rem 0rem;
+            padding: 0rem 1rem .5rem 1rem;
+        }
+
+        table {
+            width: 100%;
+            padding-top: 1rem;
+
+            th {
+                padding: .5rem;
+                background-color: #1c244d;
+            }
+
+            td {
+                padding: .5rem;
+                border-top: 1px solid gray;
+                border-bottom: 1px solid gray;
+            }
+        }
+
+        // h4 {
+        //     margin-top: 20px;
+        //     width: 520px;
+
+        //     span {
+        //         float: right;
+        //     }
+        // }
+    }
+
+    .right {
+        margin: 0rem 0rem 0rem 0rem;
+        padding: 1rem 0rem 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        .financial {
+            background-color: black;
+            width: 99%;
+            color: rgb(209, 207, 207);
+            border: 1px solid gray;
+            margin: 0rem 0rem 0rem 0rem;
+            padding: 1rem 0rem 1rem 1rem;
+
+            table {
+                width: 98%;
+                font-size: small;
+                color: white;
+    
+                .total {
+                    color: white;
+                    font-weight: bold;
+                    border-bottom: 1px solid gray;
+    
+                    input {
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+    
+                th {
+                    padding: .2rem;
+                    background-color: #1c244d;
+                }
+    
+                td {
+    
+                    input {
+                        background-color: #1c244d;
+                        color: white;
+                        height: 19px;
+                        width: 30%;
+                    }
+                    b{
+                        font-size: .9rem;
+                    }
+                }
+    
+            }
+        }
+
+    }
+}
+@media (max-width: 1440.98px) {
+    .cashier {
+        .header {
+            .back a {
+                padding: 0rem 0.5rem 0rem 0.5rem;
+                font-size: 30px;
+            }
+            .btns {
+                .printBtn {
+                    margin-left: 0.5rem;
+                    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                }
+                .btn {
+                    margin-left: 0.5rem;
+                    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                }
+            }
+            .shift {
+                margin: 0rem 0rem 0rem 0rem;
+                padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                font-size: 14px;
+            }
+        }
+    }  
+}
+
+@media (max-width: 1024.98px) {
+    .cashier {
+        .header {
+            .back h2 {
+               font-size: 22px;
+            }
+            .btns {
+                .printBtn {
+                    margin-left: 0.3rem;
+                    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                    font-size: 12px;
+                }
+                .btn {
+                    margin-left: 0.3rem;
+                    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                    font-size: 12px;
+                }
+            }
+            .shift {
+                padding: 0.5rem 0.2rem 0.5rem 0.2rem;
+                font-size: 10px;
+                height: 36px;
+                i {
+                    margin: 0rem 0.2rem 0rem 0rem;
+                }
+            }
+        }
+    }  
+}
+
+@media (max-width: 576px) {
+
+    /* Small devices (up to 576px) */
+    .col-8.left-section,
+    .col-4.right-section {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}

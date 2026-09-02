@@ -1,0 +1,61 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Shift Setup</h4>
+            </div>
+        </div>
+        <form [formGroup]="shiftSetupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="shiftSetupForm.controls['shiftId']"
+                        [options]="shifts" label="Select Shift"
+                        [valueProperty]="'shiftId'" [labelProperty]="'shiftNumber'"
+                        (valueChange)="onShiftChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="col-12">
+                                <app-text-input [formControl]="shiftSetupForm.controls['shiftNumber']"
+                                    [label]="'Shift #'"></app-text-input>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">
+                                <label>Start Time</label>
+                                <input type="time" class="inp" [formControl]="shiftSetupForm.controls['shiftStart']" />
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">
+                                <label>End Time</label>
+                                <input type="time" class="inp" [formControl]="shiftSetupForm.controls['shiftEnd']" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <app-checkbox [formControl]="shiftSetupForm.controls['isActive']"
+                                [label]="'Is Active'"></app-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

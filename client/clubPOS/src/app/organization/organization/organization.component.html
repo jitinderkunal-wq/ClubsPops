@@ -1,0 +1,118 @@
+<div class="container-fluid organization">
+    <div class="row header">
+        <div class="col-9">
+            <h1 mat-dialog-title>Organization</h1>
+        </div>
+        <div class="col-3">
+            <button type="button" class="btn btn-info" onclick="history.back()">Dashboard</button>
+            <button type="button" class="btn btn-success" *ngIf="isList" (click)="showRegistrationForm()">Add<i
+                    class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-primary" *ngIf="!isList"
+                (click)="isList=!isList; registerForm.reset()">Back to List</button>
+        </div>
+    </div>
+    <!-- Create and Update Organization Form -->
+    <form [formGroup]="registerForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()" *ngIf="!isList">
+        <div class="row">
+            <div class="col-6 registerForm">
+                <div class="row">
+                    <div class="col-6" hidden>
+                        <app-text-input [formControl]="registerForm.controls['organizationId']"
+                            [label]="'Organization Id'" [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['organizationName']"
+                            [label]="'Organization Name'" [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['registrationNumber']"
+                            [label]="'Registration Number'" [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['street']" [label]="'Street'"
+                            [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['city']" [label]="'City'"
+                            [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['province']" [label]="'Province'"
+                            [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['postalCode']" [label]="'PostalCode'"
+                            [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['country']" [label]="'Country'"
+                            [customStyles]="{'margin-top':'.5rem'}"></app-text-input>
+                    </div>
+                    <div class="col-4">
+                        <label>Upload Logo</label><br />
+                        <input type="file" [formControl]="registerForm.controls['logo']"
+                            (change)="onFileSelected($event)" />
+                    </div>
+                    <div class="col-2" *ngIf="!isSuperAdmin">
+                        <app-checkbox [formControl]="registerForm.controls['isActive']" [label]="'Is Active'"
+                            [customStyles]="{'margin-top':'.5rem'}"></app-checkbox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" *ngIf="!registerForm.controls['organizationId'].value">
+                        <button type="submit" class="col-12 btn btn-warning"
+                            [disabled]="registerForm.invalid">Create</button>
+                    </div>
+                    <div class="col-12" *ngIf="registerForm.controls['organizationId'].value">
+                        <button type="submit" class="col-12 btn btn-warning">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Get all Organizations -->
+    <div class="row" *ngIf="isList">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table>
+                <tr>
+                    <th>Logo</th>
+                    <th>Organization Name</th>
+                    <th>Registration Number</th>
+                    <th>City</th>
+                    <th>Location</th>
+                    <th>Country</th>
+                    <th>Active</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let organization of organizations">
+                    <td><img [src]="filePathApi+organization.logo" alt="" /></td>
+                    <td>{{organization.organizationName}}</td>
+                    <td>{{organization.registrationNumber}}</td>
+                    <td>{{organization.city}}</td>
+                    <td>{{organization.street}}, {{organization.city}}, {{organization.province}},
+                        {{organization.country}}</td>
+                    <td>{{organization.country}}</td>
+                    <!-- Check for {{isActive}}. If isActive is false - Red Cross. true - Green Check -->
+                    <td *ngIf="organization.isActive"><i class="fa fa-check text-success"></i></td>
+                    <td *ngIf="!organization.isActive"><i class="fa fa-close text-danger"></i></td>
+                    <!-- Check for {{isActive}}. If isActive is false - Red Cross. true - Green Check -->
+                    <td>
+                        <a class="fa fa-edit col-4 text-primary"
+                            (click)="editOrganization(organization.organizationId)"></a>
+                        <a *ngIf="organization.isActive" class="fa fa-hand-pointer-o col-4 text-info"
+                            (click)="addOrganization(organization.organizationId)"></a>
+                        <!-- <a class="fa fa-trash-o col-4 text-danger" (click)="delete(organization.organizationId)"></a> -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+.admin {
+    background-color: white;
+    height: 100%;
+    color: black;
+    padding: 1rem 1rem 1rem 1rem;
+
+    .header {
+        padding: 0rem 2rem 0rem 2rem;
+
+        img{
+            margin: 0rem 1rem 0rem 2rem;
+            height: 3rem;
+            width: 4rem;
+        }
+        
+        button {
+            color: white;
+            border-radius: 10px;
+            padding: 7px 27px 7px 27px;
+            margin-left: 20px;
+            float: right;
+        }
+
+        i{
+            margin-left: .5rem;
+        }
+    }
+
+    .registerForm{
+        margin: 3rem 1rem 1rem 30rem;
+        padding: 1rem 1rem 2rem 1rem;
+        border: 1px solid var(--orange, #F67600);
+
+        label{
+            margin-top: .7rem;
+        }
+
+        input{
+            margin-top: .6rem;
+        }
+
+        button {
+            background-color: #F67600;
+            color: white;
+            margin-top: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--orange, #F67600);
+        }  
+    }
+
+    table{
+        width: 100%;
+        margin: 5rem 0rem 1rem 0rem;
+        border: 1px solid var(--orange, #F67600);
+        
+        tr{
+            height: 1rem;
+
+            th{
+                background-color: #F67600;
+                color: white;
+                height: 1rem;
+                font-size: large;
+            }
+            td{
+                border-bottom: 1px solid var(--orange, #f0ece9);
+                height: 4rem;
+
+                i{
+                    font-size: 2rem;
+                    text-align: center;
+                }
+            }
+            img{
+                height: 60px;
+                width: 70px;
+            }
+
+            a{
+                cursor: pointer;
+                font-size: 2rem; 
+                text-decoration: none;
+                
+            }
+        }
+        
+    }
+}

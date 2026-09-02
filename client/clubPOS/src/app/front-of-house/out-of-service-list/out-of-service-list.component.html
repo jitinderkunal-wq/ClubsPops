@@ -1,0 +1,44 @@
+<div class="container model">
+
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-8">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Room Maintenance</h1>
+            </div>
+            <div class="col-4">
+                <p>Click any row to view out of service</p> 
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Accomodation</th>
+                            <th>Date Out of Service</th>
+                            <th>Employee</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let outOfServiceAccommodation of outOfServiceAccommodations"
+                            (click)="onRowClick(outOfServiceAccommodation)">
+                            <td>{{outOfServiceAccommodation.typeName}} : #{{outOfServiceAccommodation.number}}</td>
+                            <td>{{outOfServiceAccommodation.lastMaintenanceLog?.logDate}}</td>
+                            <td>{{outOfServiceAccommodation.lastMaintenanceLog?.employeeName}}</td>
+                            <td>{{outOfServiceAccommodation.lastMaintenanceLog?.comment}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer">
+                        <button type="button" class="btn" style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

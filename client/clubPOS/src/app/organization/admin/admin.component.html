@@ -1,0 +1,172 @@
+<div class="container-fluid admin">
+    <div class="row header">
+        <div class="col-9">
+            <h2><img [src]="organizationLogo" alt=""/>{{organizationName}}</h2>
+        </div>
+        <div class="col-3">
+            <button type="button" class="btn btn-info" onclick="history.back()">Back</button>
+            <button type="button" class="btn btn-success" *ngIf="isList" (click)="showRegistrationForm()">Add<i
+                    class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-primary" *ngIf="!isList"
+                (click)="isList=!isList; registerForm.reset()">Back to List</button>
+        </div>
+
+    </div>
+    <!-- Create and Update Admin for that Organization Form -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!isList">
+        <div class="row">
+            <div class="col-6 registerForm">
+                <div class="row">
+                    <div class="col-6" hidden>
+                        <app-text-input [formControl]="registerForm.controls['organizationId']" [type]="'number'"
+                            [label]="'Organization Id'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6" hidden>
+                        <app-text-input [formControl]="registerForm.controls['role']" [type]="'number'"
+                            [label]="'role'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['firstName']" [label]="'First Name'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['lastName']" [label]="'Last Name'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['hireDate']" [type]="'date'"
+                            [label]="'Hire Date'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['terminationDate']" [type]="'date'"
+                            [label]="'Termination Date'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['email']" [type]="'email'"
+                            [label]="'Email'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['password']" [type]="'password'"
+                            [label]="'Password'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['confirmPassword']" [type]="'password'"
+                            [label]="'Confirm Password'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['province']" [label]="'Province'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['city']" [label]="'City'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['sin']" [type]="'number'" [label]="'SIN'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['postalCode']" [label]="'Postal Code'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['cellPhone']" [label]="'Cell Phone'"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-input [formControl]="registerForm.controls['payRate']" [type]="'number'"
+                            [label]="'Pay Rate'" [customStyles]="{'margin-top':'0rem'}"></app-text-input>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-4">
+                                <app-checkbox [formControl]="registerForm.controls['isSalary']" [label]="'Is Salary'"
+                                    [customStyles]="{'margin-top':'0rem'}"></app-checkbox>
+                            </div>
+                            <div class="col-4">
+                                <app-checkbox [formControl]="registerForm.controls['isActive']" [label]="'Is Active'"
+                                    [customStyles]="{'margin-top':'0rem'}"></app-checkbox>
+                            </div>
+                            <div class="col-4">
+                                <app-checkbox [formControl]="registerForm.controls['inTrainingMode']"
+                                    [label]="'In Training Mode'" [customStyles]="{'margin-top':'0rem'}"></app-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <app-text-area [formControl]="registerForm.controls['street']" [label]="'Street'" [rows]="2"
+                            [customStyles]="{'margin-top':'0rem'}"></app-text-area>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="col-12 btn btn-warning"
+                            [disabled]="registerForm.invalid">{{formButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row" *ngIf="isList">
+        <div class="col-12">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Hire Date</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Pay Rate ($)</th>
+                    <th>Terminated</th>
+                    <th>Traning Mode</th>
+                    <th>Active</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let user of users">
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.hireDate | date:'medium'}}</td>
+                    <td>{{user.cellPhone}}</td>
+                    <td>{{user.street}}, {{user.city}}, {{user.province}}</td>
+                    <td>$ {{user.payRate}}</td>
+
+                    <!-- Check for {{Terminated Date}}. If TerminatedDate is null - Red Cross. not null - TerminatedDate -->
+                    <td *ngIf="user.terminationDate">{{user.terminationDate | date:'medium'}}</td>
+                    <td *ngIf="!user.terminationDate"><i class="fa fa-close text-danger"></i></td>
+                    <!-- Check for {{Terminated Date}}. If TerminatedDate is null - Red Cross. not null - TerminatedDate -->
+
+                    <!-- Check for {{inTrainingMode}}. If inTrainingMode is false - Red Cross. true - Green Check -->
+                    <td *ngIf="user.inTrainingMode"><i class="fa fa-check text-success"></i></td>
+                    <td *ngIf="!user.inTrainingMode"><i class="fa fa-close text-danger"></i></td>
+                    <!-- Check for {{inTrainingMode}}. If inTrainingMode is false - Red Cross. true - Green Check -->
+
+                    <!-- Check for {{isActive}}. If isActive is false - Red Cross. true - Green Check -->
+                    <td *ngIf="user.isActive"><i class="fa fa-check text-success"></i></td>
+                    <td *ngIf="!user.isActive"><i class="fa fa-close text-danger"></i></td>
+                    <!-- Check for {{isActive}}. If isActive is false - Red Cross. true - Green Check -->
+
+                    <td>
+                        <a class="fa fa-edit col-6 text-primary" (click)="edit(user.userId)"></a>
+                        <!-- <a class="fa fa-trash-o col-6 text-danger" (click)="delete(user.userId)"></a> -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

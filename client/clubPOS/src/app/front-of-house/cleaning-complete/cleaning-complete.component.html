@@ -1,0 +1,48 @@
+<div class="container model" *ngIf="accommodationWithTypeAndStatus">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Room Cleaning</h1>
+                <p>{{accommodationWithTypeAndStatus.typeName}} : # {{accommodationWithTypeAndStatus.number}}</p>
+            </div>
+        </div>
+        <div class="row" *ngIf="cleaningTasks">
+            <div mat-dialog-content class="content">
+                <div class="tabs">
+                    <div class="col-12">
+                        <div class="row tb">
+                            <div class="col-2" *ngFor="let cleaningTask of cleaningTasks">
+                                <button (click)="onIncompleteCleaningTaskClick(cleaningTask)"
+                                    [ngClass]="{'selected': cleaningTaskIdsToResolve.includes(cleaningTask.cleaningTaskId)}"
+                                    [disabled]="cleaningTaskIdsToResolve.includes(cleaningTask.cleaningTaskId)">{{cleaningTask.taskName}}</button>
+                            </div>
+                            <!-- <div class="col-2" *ngFor="let maintenanceLogDetail of maintenanceLogDetailsNotResolved">
+                                <button (click)="onMaintenanceTaskNotResolvedClick(maintenanceLogDetail)"
+                                    [ngClass]="{'selected': maintenanceTaskIdsToResolved.includes(maintenanceLogDetail.maintenanceTaskId)}"
+                                    [disabled]="maintenanceTaskIdsToResolved.includes(maintenanceLogDetail.maintenanceTaskId)">{{maintenanceLogDetail.taskName}}</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <p>Comments:</p>
+                <textarea type="text" [formControl]="cleaningCompletionForm.controls['comment']" matInput placeholder="Ex. Comment" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+            </div>
+            <div class="col-6">
+                <form [formGroup]="cleaningCompletionForm" (ngSubmit)="onSubmit()">
+                    <div mat-dialog-actions class="btn-group">
+                        <button type="button" class="btn" (click)="closePopup()">Cancel</button>
+                        <!-- <button type="submit" class="btn btn-save">Needs Maintenance</button> -->
+                        <button [disabled]="cleaningTaskIdsToResolve.length !== cleaningTasks.length" type="submit" class="btn btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Add to Waiting List</h1>
+            </div>
+        </div>
+        <form [formGroup]="createAddToWaitingListForm" (ngSubmit)="onSubmit()">
+            <div class="row content">
+                <div class="col-12">
+                    <div class="row">
+                        <span>Priority</span>
+                        <select [formControl]="createAddToWaitingListForm.controls['membershipTypeId']" name="priority"
+                            class="drp" ng-required="membershipTypeId">
+                            <option *ngFor="let activeMembershipList of activeMembershipLists"
+                                [value]="activeMembershipList.membershipTypeId">{{activeMembershipList.membershipName}}</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <span>Room Type</span>
+                        <select [formControl]="createAddToWaitingListForm.controls['accommodationTypeId']" name="type"
+                            class="drp" ng-required="accommodationTypeId">
+                            <option *ngFor="let accommodationType of accommodationTypes"
+                                [value]="accommodationType.accommodationTypeId">{{accommodationType.typeName}}</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <span>Phone</span>
+                        <input [formControl]="createAddToWaitingListForm.controls['phone']" type="number" 
+                         class="inp" ng-required="phone" />
+                    </div>
+                    <div class="row">
+                        <span>Comment</span>
+                        <textarea [formControl]="createAddToWaitingListForm.controls['comment']" 
+                            class="comment" cols="30" rows="10" ng-required="comment"></textarea>
+                    </div>
+                    <div *ngIf="isFormValid" class="text-danger">Please enter valid data...</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button type="button" class="btn" style="color: #F67600;background-color: black"
+                            (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning" [disabled]="createAddToWaitingListForm.invalid">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

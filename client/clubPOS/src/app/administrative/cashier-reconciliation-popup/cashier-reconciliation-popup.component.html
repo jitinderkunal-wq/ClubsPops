@@ -1,0 +1,40 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-8">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Cashier Reconciliation Selection</h4>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date Created</th>
+                            <th>Name</th>
+                            <th>Shift#</th>
+                            <th>Total Accom Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let activeSession of activeSalesSessions" (click)="selectedSession(activeSession)">
+                            <td>{{activeSession.dateCreated | date:'dd-MM-yyyy'}}</td>
+                            <td>{{activeSession.name}}</td>
+                            <td>{{activeSession.shift}}</td>
+                            <td>${{activeSession.beginFloat}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer">
+                    <button type="button" class="btn" style="color: #F67600;background-color: black"
+                        (click)="closePopup()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

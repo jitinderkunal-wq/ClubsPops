@@ -1,0 +1,54 @@
+using ClubPOS.API.Errors;
+using ClubPOS.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ClubPOS.API.Controllers;
+
+public class BuggyController : BaseApiController
+{
+    private readonly DataContext _context;
+
+    public BuggyController(DataContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet("testauth")]
+    [Authorize]
+    public ActionResult<string> GetSecretText()
+    {
+        return "secret revealed";
+    }
+
+    [HttpGet("notfound")]
+    public ActionResult GetNotFoundRequest()
+    {
+        var thing = _context.Accommodations?.Find(0);
+        if (thing == null)
+        {
+            return NotFound(new ApiResponse(404));
+        }
+        return Ok();
+    }
+
+    [HttpGet("servererror")]
+    public ActionResult GetServerErrorRequest()
+    {
+        var thing = _context.Accommodations!.Find(42);
+        var thingsToReturn = thing!.ToString();
+        return Ok();
+    }
+
+    [HttpGet("badrequest")]
+    public ActionResult GetBadRequest()
+    {
+        return BadRequest(new ApiResponse(400));
+    }
+
+    [HttpGet("badrequest/{id}")]
+    public ActionResult GetBadRequest(int id)
+    {
+        return Ok();
+    }
+}

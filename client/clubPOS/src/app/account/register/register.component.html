@@ -1,0 +1,130 @@
+<div class="container-fluid register">
+    <div class="row header">
+        <div class="col-8">
+            <h1 mat-dialog-title><a class="col-2" routerLink="/administrative">
+                    < </a>Employee</h1>
+        </div>
+        <div class="col-4 note">
+            <span>Select any Employee from Select User drop-down to edit details for that Employee.</span>
+        </div>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row content">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">
+                        <app-dropdown [formControl]="registerForm.controls['userId']" [options]="users"
+                            label="Select User" [valueProperty]="'userId'" [labelProperty]="'firstName'"
+                            (valueChange)="onUserSelectionChange($event)">
+                        </app-dropdown>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-3" hidden>
+                            <app-text-input [formControl]="registerForm.controls['organizationId']" [type]="'number'"
+                                [label]="'Organization Id'"></app-text-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['firstName']"
+                            [label]="'First Name'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['lastName']"
+                            [label]="'Last Name'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['hireDate']" [type]="'date'"
+                            [label]="'Hire Date'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['terminationDate']" [type]="'date'"
+                            [label]="'Termination Date'"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['email']" [type]="'email'"
+                            [label]="'Email'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['password']" [type]="'password'"
+                            [label]="'Password'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['confirmPassword']" [type]="'password'"
+                            [label]="'Confirm Password'"></app-text-input>
+                    </div>
+                    <div class="col-3" *ngIf="roles">
+                        <app-dropdown [formControl]="registerForm.controls['role']" [options]="roles" label="Role"
+                            [valueProperty]="'roleName'" [labelProperty]="'roleName'"></app-dropdown>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['province']"
+                            [label]="'Province'"></app-text-input>
+                    </div>
+                    <div class="col-3 ">
+                        <app-text-input [formControl]="registerForm.controls['city']" [label]="'City'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['sin']" [type]="'number'"
+                            [label]="'SIN'"></app-text-input>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['postalCode']"
+                            [label]="'Postal Code'"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-text-area [formControl]="registerForm.controls['street']" [label]="'Street'"
+                            [rows]="6"></app-text-area>
+                    </div>
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <app-text-input [formControl]="registerForm.controls['cellPhone']" [type]="'number'"
+                                    [label]="'Cell Phone'"></app-text-input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <app-checkbox [formControl]="registerForm.controls['isSalary']"
+                                    [label]="'Is Salary'"></app-checkbox>
+                            </div>
+                            <div class="col-4 checkBoxDiv">
+                                <app-checkbox [formControl]="registerForm.controls['isActive']"
+                                    [label]="'Is Active'"></app-checkbox>
+                            </div>
+                            <div class="col-4 checkBoxDiv">
+                                <app-checkbox [formControl]="registerForm.controls['inTrainingMode']"
+                                    [label]="'In Training Mode'"></app-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <app-text-input [formControl]="registerForm.controls['payRate']" [type]="'number'"
+                            [label]="'Pay Rate'"></app-text-input>
+                    </div>
+                </div>
+                <div class="text-danger list-unstyled" *ngIf="errors">
+                    <li *ngFor="let error of errors">
+                        {{error}}
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer">
+                    <button type="button" class="btn" style="color: #F67600;background-color: black"
+                        routerLink="/administrative">Cancel</button>
+                    <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

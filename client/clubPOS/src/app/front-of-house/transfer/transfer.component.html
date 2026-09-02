@@ -1,0 +1,46 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-4">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Transfer Accommodation</h1>
+            </div>
+            <div class="col-5">
+                <div class="booking">
+                    {{selectedAccommodationInfo}}
+                </div>
+            </div>
+            <div class="col-3">
+                <p>Select a accommodation for transfer</p>
+                <!-- <button type="button" class="btn">Edit Selected</button>
+                <button type="button" class="btn">Re-Print Sale</button> -->
+            </div>
+        </div>
+        <div class="row accommodationPage">
+            <div class="col-12 box">
+                <div class="row">
+                    <div *ngFor="let accommodation of accommodations" [ngClass]="{
+                            'col-2 acmdNo': true,
+                            'in-use': accommodation.accommodationStatusId === 2,
+                            'needs-maintenance': accommodation.accommodationStatusId === 3,
+                            'extensive-cleaning': accommodation.accommodationStatusId === 4
+                        }">
+                        <ng-container
+                            *ngIf="accommodation.accommodationStatusId === 5 || accommodation.accommodationStatusId === 2; else disableButton">
+                            <a *ngIf="accommodation.accommodationStatusId === 2"
+                                (mouseenter)="showAccommodationInfo(accommodation)">{{accommodation.number}}</a>
+                            <a *ngIf="accommodation.accommodationStatusId === 5"
+                                (click)="transferBooking(accommodation.accommodationId)"
+                                (mouseenter)="showAccommodationInfo(accommodation)">{{accommodation.number}}</a>
+                        </ng-container>
+                        <ng-template #disableButton>
+                            <a (click)="handleDisabledClick($event)" class="disabled-link">
+                                {{accommodation.number}}
+                            </a>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

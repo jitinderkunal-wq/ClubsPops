@@ -1,0 +1,76 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Accommodation Rate Setup</h4>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+        <form [formGroup]="accommodationRateSetupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="accommodationRateSetupForm.controls['accommodationRateId']"
+                        [options]="accommodationRates" label="Select Accommodation Rate"
+                        [valueProperty]="'accommodationRateId'" [labelProperty]="'rateName'"
+                        (valueChange)="onAccommodationRateChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-6">
+                    <app-dropdown [formControl]="accommodationRateSetupForm.controls['accommodationTypeId']"
+                        [options]="accommodationTypes" label="Select Accommodation Type"
+                        [valueProperty]="'accommodationTypeId'" [labelProperty]="'typeName'"
+                        (valueChange)="onAccommodationTypeChange($event.target.value)">
+                    </app-dropdown>
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['rateName']"
+                        [label]="'Accommodation Rate Name'"></app-text-input>
+                    <app-dropdown [formControl]="accommodationRateSetupForm.controls['startDayOfTheWeek']"
+                        [options]="days" label="Select Start Day Of The Week" [valueProperty]="'value'"
+                        [labelProperty]="'label'"></app-dropdown>
+                    <app-dropdown [formControl]="accommodationRateSetupForm.controls['endDayOfWeek']" [options]="days"
+                        label="End Day Of Week" [valueProperty]="'value'" [labelProperty]="'label'"></app-dropdown>
+                    <div class="row">
+                        <div class="col-6">
+                            <app-checkbox [formControl]="accommodationRateSetupForm.controls['isStandardRate']"
+                                [label]="'Is Standard Rate'"></app-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['hours']" [type]="'number'"
+                        [label]="'Hours'"></app-text-input>
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['totalPrice']" [type]="'number'"
+                        [label]="'Total Price'" (valueChange)="onTotalPriceInputValueChange($event)"></app-text-input>
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['rateStartTime']"
+                        [type]="'datetime-local'" [label]="'Rate Start Time'"></app-text-input>
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['rateEndTime']"
+                        [type]="'datetime-local'" [label]="'Rate End Time'"></app-text-input>
+                    <app-checkbox [formControl]="accommodationRateSetupForm.controls['isActive']"
+                        [label]="'Is Active'"></app-checkbox>
+                </div>
+            </div>
+            <div class="row hiddenContent">
+                <div class="col-6">
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['price']" [type]="'number'"
+                        [label]="'Price'"></app-text-input>
+                </div>
+                <div class="col-6">
+                    <app-text-input [formControl]="accommodationRateSetupForm.controls['tax1']" [type]="'number'"
+                        [label]="'Tax-1'"></app-text-input>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

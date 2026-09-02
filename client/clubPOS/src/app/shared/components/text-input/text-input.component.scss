@@ -1,0 +1,14 @@
+.myInput {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    input {
+        background-color: #0E1227;
+        color: white;
+
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            /* Invert the colors of the icon */
+        }
+    }
+}

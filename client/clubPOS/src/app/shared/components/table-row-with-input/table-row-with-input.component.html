@@ -1,0 +1,7 @@
+<tr class="myInput" [ngStyle]="customStyles">
+    <td>{{label}}</td>
+    <td>
+        <input [formControl]="control" type={{type}} placeholder={{label}} (change)="onInputChange($event)" />
+        <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please enter your {{label}}</div>
+    </td>
+</tr>

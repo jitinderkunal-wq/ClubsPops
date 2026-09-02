@@ -1,0 +1,101 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Promo Passes Setup</h4>
+            </div>
+            <div class="col-6">
+                <!-- <button class="aplybtn">Apply By Rate Filter</button> -->
+            </div>
+        </div>
+        <form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="couponForm.controls['couponId']" [options]="coupons"
+                        label="Select Coupon (Promo/Pass)" [valueProperty]="'couponId'" [labelProperty]="'couponName'"
+                        (valueChange)="onCouponChange($event)">
+                    </app-dropdown>
+                </div>
+                <div class="col-3"></div>
+                <div class="col-4 datepan">
+                    <label for="">Date of Creation : <strong>{{dateCreated | date: 'EEE MMM-d, y'}}</strong></label>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <app-dropdown [formControl]="couponForm.controls['accommodationTypeId']"
+                                [options]="accommodationTypes" label="Select Accommodation Type"
+                                [valueProperty]="'accommodationTypeId'" [labelProperty]="'typeName'"
+                                (valueChange)="onAccommodationTypeChange($event)">
+                            </app-dropdown>
+                            <p>Note: Select applicable Accommodation Type or leave blank for all Types.</p>
+                            <app-text-input [formControl]="couponForm.controls['couponName']"
+                                [label]="'Coupon Name'"></app-text-input>
+                            <app-text-input [formControl]="couponForm.controls['flatRate']" [label]="'Flat Rate'"
+                                [type]="'number'"></app-text-input>
+                            <app-text-input [formControl]="couponForm.controls['discountDollars']"
+                                [label]="'Discount $'" [type]="'number'"></app-text-input>
+                            <app-text-area [formControl]="couponForm.controls['description']" [label]="'description'"
+                                [rows]="3" [customStyles]="{'resize': 'none'}"></app-text-area>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <app-text-input [formControl]="couponForm.controls['discountPercent']"
+                                [label]="'Discount %'" [type]="'number'"></app-text-input>
+                            <app-text-input [formControl]="couponForm.controls['startDate']" [label]="'Start Date'"
+                                [type]="'date'"></app-text-input>
+                            <app-text-input [formControl]="couponForm.controls['expiryDate']" [label]="'Expiry Date'"
+                                [type]="'date'"></app-text-input>
+                            <div class="row">
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="couponForm.controls['isExclusive']"
+                                        [label]="'Is Exclusive'"
+                                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between'}"></app-checkbox>
+                                </div>
+                                <div class="col-6 mt-4">
+                                    <p>Cannot be combined with other discount offers</p>
+                                </div>
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="couponForm.controls['isActive']" [label]="'Is Active'"
+                                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between'}"></app-checkbox>
+                                </div>
+                                <div class="col-6 mt-4">
+                                    <p>If the coupon is active or not</p>
+                                </div>
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="couponForm.controls['isCoupon']" [label]="'Is Coupon'"
+                                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between'}"></app-checkbox>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <p>Requires a Physical Pass Card or Coupon to be attached to the Receipt.</p>
+                                </div>
+                                <div class="col-6">
+                                    <app-checkbox [formControl]="couponForm.controls['returnOnCheckOut']"
+                                        [label]="'Return On Check Out'"
+                                        [customStyles]="{'display': 'flex', 'justify-content': 'space-between'}"></app-checkbox>
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <p>This physical pass or card needs to be returned to the guest on Check-Out</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container model" *ngIf="coupons">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Coupons View Form</h1>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-12 box" *ngIf="promoPasses.length > 0">
+                <span>Promo/Passes</span>
+                <div class="row">
+                    <div class="col-4" *ngFor="let promoPass of promoPasses">
+                        <span class="btn" (click)="submitDiscount(promoPass)"># {{promoPass.couponId}}
+                            <br>{{promoPass.couponName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 box" *ngIf="requiresCoupons.length > 0">
+                <span>Requires Coupon</span>
+                <div class="row">
+                    <div class="col-4" *ngFor="let requiresCoupon of requiresCoupons">
+                        <span class="btn" (click)="submitDiscount(requiresCoupon)"># {{requiresCoupon.couponId}}
+                            <br>{{requiresCoupon.couponName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

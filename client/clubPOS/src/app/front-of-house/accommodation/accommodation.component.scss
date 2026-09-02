@@ -1,0 +1,337 @@
+.main{
+    background-color: #00020d;
+    min-height: 100%;
+}
+.header {
+    color: white;
+    width: 100%;
+    height: auto;
+    padding: 1rem 0rem 0rem 0rem;
+
+    img{
+        margin: 0rem 1rem 0rem 0rem;
+        height: 3rem;
+        width: 4rem;
+    }
+    h1 {
+       margin-bottom: 0;
+    }
+
+    .dropD {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color:white;
+
+        span{
+            margin-right: .5rem;
+        }
+        
+        .drp{
+            padding: 6px;
+            width: 100%;
+        }
+    }
+    .boxdiv p{
+        background-color: white;
+        color: #00020d;
+        text-align: center;
+        padding: 6px;
+        margin-top: .8rem;
+    }
+    .btn{
+        background: #F67600;
+        color:white;
+        border-radius: 10px;
+        padding:7px 27px 7px 27px;
+        margin-left: 20px;
+        float: right;
+    }
+    i{
+        padding-right: 5px;
+    }
+    .booking{
+        min-height: 50px;
+        border: 1px solid gray;
+        color: white;
+        padding: 3px;
+        font-size: small;
+    }
+}
+
+.accommodationPage {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    .box {
+        background-color: #00020d;
+        color: white;
+        text-align: center;
+
+        .acmdNo {
+            background-color: #00B300;
+            height: 6rem;
+            width: 6rem;
+            margin: 0.3rem;
+            transition: background-color 0.3s ease;
+            padding: 0;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+                color: white;
+                font-size: 1.2rem;
+            }
+
+            .disabled-link {
+                color: #ccc;
+                cursor: not-allowed;
+                pointer-events: none;
+            }
+        }
+
+        .acmdNo:hover {
+            background-color: #0f590f;
+            cursor: pointer;
+        }
+
+        .in-use {
+            background-color: #E92424;
+        }
+
+        .overDue {
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { background-color: red; }
+            50% { background-color: black; }
+        }
+
+        .in-use:hover {
+            background-color: #7a1a1a;
+        }
+
+        .needs-maintenance {
+            background-color: #6262FA;
+        }
+
+        .needs-maintenance:hover {
+            background-color: #13135e;
+        }
+
+        .needs-cleaning {
+            background-color: #d9d022db;
+        }
+
+        .needs-cleaning:hover {
+            background-color: #928d25db;
+        }
+
+        .employee-accommodation {
+            background-color: #783c78;
+            cursor: none;
+        }
+
+        .employee-accommodation:hover {
+            background-color: #783c78;
+            cursor: no-drop;
+        }
+    }
+
+    .menu {
+        color: #F67600;
+    }
+    .sideBar{
+        height: 100%;
+        background-color: #0E1227;
+        padding: 1rem 0rem 0rem 1rem;
+    }
+    .sideBar .row {
+        margin-bottom: 1rem;
+    }
+
+    .sideBar div div {
+        background-color: #0E1227;
+        color: white;
+        border: 1px solid #F67600;
+        font-size: 0.8rem;
+        border-radius: 10px;
+        height: 5rem;
+        width: 8.9rem;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .sideBar div div:hover {
+        background-color: #00020d;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1700px) {
+    .accommodationPage {
+        .box .acmdNo {
+            height: 4rem;
+            width: 4rem;
+        }
+        .sideBar div div {
+            height: 3rem;
+            text-align: center;
+        }
+    }    
+}
+
+@media (max-width: 1600px) {
+    .header {
+        img {
+            height: 2rem;
+            width: 2rem;
+        }
+        h1 {
+            font-size: 22px;
+        }  
+        .boxdiv p {
+            margin-top: 0;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        .header .booking {
+            min-height: 40px;
+        }
+        .btn {
+            border-radius: 4px;
+            padding: 4px 20px 3px 20px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+    }
+    .accommodationPage {
+        .sideBar div div {
+            width: 10.9rem;
+            height: 2rem;
+        }
+    }    
+}
+
+@media (max-width: 1199px) {
+    .accommodationPage {
+        .box .acmdNo {
+            height: 3rem;
+            width: 3rem;
+        }
+        .sideBar div div {
+            width: 7.9rem;
+            height: 3rem;
+        }
+    }  
+    .header{
+        .dropD .drp {
+            font-size: 12px;
+            padding: 4px;
+        }  
+        .boxdiv p {
+            font-size: 12px;
+            padding: 4px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        h1 {
+          margin-bottom: 20px;
+        }  
+    }
+    .accomo-btns {
+        .left {
+            width: 45%;
+        }
+        .right {
+            width: 55%;
+        }
+    }
+    .accommodationPage .menu {
+        font-size: 14px;
+    }
+}
+
+.footer{
+    color: white;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid gray;
+    background: #00020d;
+
+    p{
+        .fItems{
+            margin-left: 1rem;
+        }
+
+        i{
+            margin-left: 0.2rem;
+        }
+    }
+    
+}
+
+@media (max-width: 769px) {
+    .accomo-btns {
+        .left {
+            width: 40%;
+        }
+        .right {
+            width: 60%;
+        }
+    }
+    .col.dropD {
+        width: 50%;
+        flex: 0 0 auto;
+        margin-bottom: 16px;
+    }
+    .col.boxdiv {
+        width: 33.3%;
+        flex: 0 0 auto;
+    }
+   .accommodationPage {
+    .col-8 {
+        width: 100%;
+        margin-bottom: 10px;
+    }       
+    .col-4 {
+        width: 100%;
+    }   
+   }
+}
+
+@media (max-width: 576px) {
+
+    .accomo-btns {
+        .left {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .right {
+            width: 100%;
+        }
+    }
+    .col.boxdiv {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+    .header .btn {
+        padding: 4px 10px 3px 10px;
+        font-size: 12px;
+    }
+}

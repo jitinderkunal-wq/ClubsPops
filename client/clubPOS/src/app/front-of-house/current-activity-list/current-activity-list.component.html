@@ -1,0 +1,47 @@
+<div class="container model" *ngIf="bookedAccommodations">
+
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Current Activity</h1>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn">Edit Selected</button>
+                <button type="button" class="btn">Re-Print Sale</button>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Room/Locker Type</th>
+                            <th>Room/Locker #</th>
+                            <th>CheckIn Time</th>
+                            <th>OverDue Time</th>
+                            <th>CheckOut Time Scheduled</th>
+                            <th>Rate Total</th>
+                            <th>Total</th>
+                            <th>Room Status</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let bookedAccommodation of bookedAccommodations">
+                        <tr>
+                            <td>{{bookedAccommodation.bookedAccommodation.typeName}}</td>
+                            <td>{{bookedAccommodation.bookedAccommodation.number}}</td>
+                            <td>{{bookedAccommodation.booking.checkInTime.split('T')[1].split('.')[0]}}</td>
+                            <td></td>
+                            <td>{{bookedAccommodation.booking.timeCheckedOut.split('T')[1].split('.')[0]}}</td>
+                            <td>{{bookedAccommodation.booking.rateTotal}}</td>
+                            <td>{{bookedAccommodation.booking.total}}</td>
+                            <td>{{bookedAccommodation.bookedAccommodation.statusName}}</td>
+                            <td>{{bookedAccommodation.booking.comment}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

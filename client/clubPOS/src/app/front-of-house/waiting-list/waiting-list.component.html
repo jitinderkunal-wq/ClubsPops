@@ -1,0 +1,58 @@
+<div class="container model" *ngIf="activeWaitingListAccommodations">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-5">
+                <h1 mat-dialog-title><b (click)="closePopup()">X</b>Waiting List</h1>
+            </div>
+            <div class="col-7">
+                <!-- <button type="button" class="btn btn1">Un-Assign</button>
+                <button type="button" class="btn btn2">Assign</button>
+                <button type="button" class="btn btn3" (click)="bumpDownWaiting()">Bump Down</button> -->
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Priority N</th>
+                            <th>Accommodation #</th>
+                            <th>Start Time</th>
+                            <th>Employee</th>
+                            <th>Room Assigned</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead> 
+                    <!-- activeWaitingListAccommodation.activeWaitingList?.accommodationTypeId -->
+                    <tbody>
+                        <tr *ngFor="let activeWaitingListAccommodation of activeWaitingListAccommodations" 
+                        (click)="getAccommodationId(activeWaitingListAccommodation.accommodationId)"
+                        [ngClass]="accommodationId == activeWaitingListAccommodation.accommodationId ? 'selected' : 'deselected'">
+                            <td>{{activeWaitingListAccommodation.accommodationId}}</td>
+                            <td>{{activeWaitingListAccommodation.activeWaitingList?.membershipId}}</td>
+                            <td>{{activeWaitingListAccommodation.number}}</td>
+                            <td>{{activeWaitingListAccommodation.activeWaitingList?.waitListTimeAdded |
+                                date:'yyyy-MM-dd, HH:mm:ss'}}</td>
+                            <td>{{activeWaitingListAccommodation.activeWaitingList?.employeeName}}</td>
+                            <td *ngIf="activeWaitingListAccommodation.activeWaitingList?.accommodationTypeId===1">Locker</td>
+                            <td *ngIf="activeWaitingListAccommodation.activeWaitingList?.accommodationTypeId===2">Single Room</td>
+                            <td *ngIf="activeWaitingListAccommodation.activeWaitingList?.accommodationTypeId===3">Single Room + TV</td>
+                            <td *ngIf="activeWaitingListAccommodation.activeWaitingList?.accommodationTypeId===4">Double Room + TV</td>
+                            <td>{{activeWaitingListAccommodation.activeWaitingList?.comment}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer">
+                    <button mat-dialog-close type="button" class="btn" style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                    <button type="button" class="btn btn-warning" (click)="deleteWaiting()" [disabled]="!isSelected">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

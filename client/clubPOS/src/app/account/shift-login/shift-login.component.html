@@ -1,0 +1,29 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Shift Login</h4>
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
+        <form [formGroup]="shiftloginForm" (ngSubmit)="onSubmit()">
+            <div class="row content">
+                <div class="col-12">
+                    <app-text-input [formControl]="shiftloginForm.controls['email']" [label]="'Email'"></app-text-input>
+                    <app-text-input [formControl]="shiftloginForm.controls['password']" [type]="'password'"
+                [label]="'Password'"></app-text-input>
+                </div>
+                <div class="col-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-grid">
+                        <button [disabled]="shiftloginForm.invalid" type="submit" class="btn">Login</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

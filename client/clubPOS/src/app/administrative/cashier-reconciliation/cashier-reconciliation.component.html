@@ -1,0 +1,397 @@
+<div class="container-fluid cashier">
+
+    <div class="row">
+        <div class="col-12 header">
+            <div class="col-4 back">
+                <h2><a class="col-2" routerLink="/administrative">
+                        < </a> Cashier Reconciliation</h2>
+            </div>
+            <div class="col-8">
+                <div class="d-flex justify-content-end">
+                    <div class="shift">
+                        User: <i>{{activeSession.name}}</i> | &nbsp; Shift: #<i>{{activeSession.shift}}</i> | &nbsp;
+                        Shift
+                        Start: <i>{{activeSession.dateCreated | date: 'dd-MM-yyyy hh:mm a'}}</i>
+                        | &nbsp; Shift End: <i>{{currentDateTime | date: 'dd-MM-yyyy hh:mm a'}}</i>
+                    </div>
+                    <div class="btns">
+                        <button type="button" class="printBtn">Print EOS</button>
+                        <button type="button" class="printBtn">Print POS</button>
+                        <button type="submit" class="btn btn-success" (click)="onSubmit()">Save</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 left">
+            <div class="col-12">
+                <div class="card accomodations">
+                    <div class="card-body">
+                        <h5 class="card-title">Accomodations</h5>
+                        <table>
+                            <tr class="">
+                                <th>Accom Type</th>
+                                <th>Qty</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr>
+                                <td>Locker</td>
+                                <td>{{data.lockerQuantity}}</td>
+                                <td>$ {{data.lockerAccomodationTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>Single Room</td>
+                                <td>{{data.singleRoomQuantity}}</td>
+                                <td>$ {{data.singleRoomAccomodationTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>Single Room + TV</td>
+                                <td>{{data.singleRoomTVQuantity}}</td>
+                                <td>$ {{data.singleRoomTVAccomodationTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>Double Room + TV</td>
+                                <td>{{data.doubleRoomTVQuantity}}</td>
+                                <td>$ {{data.doubleRoomTVAccomodationTotal}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <h4>Total: <span>$ 480.50</span></h4> -->
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card accomodations">
+                    <div class="card-body">
+                        <h5 class="card-title">Transfer</h5>
+                        <table>
+                            <tr class="">
+                                <th>Accom Type</th>
+                                <th>Qty</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr>
+                                <td>Locker</td>
+                                <td>{{data.lockerTransferQuantity}}</td>
+                                <td>$ {{data.lockerAccomodationTransferTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>Single Room</td>
+                                <td>{{data.singleRoomTransferQuantity}}</td>
+                                <td>$ {{data.singleRoomAccomodationTransferTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>Single Room + TV</td>
+                                <td>{{data.singleRoomTVTransferQuantity}}</td>
+                                <td>$ {{data.singleRoomTVAccomodationTransferTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>Double Room + TV</td>
+                                <td>{{data.doubleRoomTVTransferQuantity}}</td>
+                                <td>$ {{data.doubleRoomTVAccomodationTransferTotal}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <h4>Total: <span>$ 480.50</span></h4> -->
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card accomodations">
+                    <div class="card-body">
+                        <h5 class="card-title">Deposits</h5>
+                        <table>
+                            <!-- <tr class="">
+                            <th>Deposit Type</th>
+                            <th>Amount</th>
+                        </tr> -->
+                            <tr>
+                                <td>Refunded Deposits</td>
+                                <td>$ {{data.refundedDeposits}}</td>
+                            </tr>
+                            <tr>
+                                <td>Forfitted Deposist</td>
+                                <td>$ {{data.forfittedDeposist}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Collected</td>
+                                <td>$ {{data.totalCollected}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <h4>Total: <span>$ 480.50</span></h4> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8 right">
+            <div class="col-12">
+                <div class="card financial">
+                    <form [formGroup]="cashierReconciliationForm" (ngSubmit)="onSubmit()">
+                        <table>
+                            <tr>
+                                <th>Financial</th>
+                                <th>Polled</th>
+                                <th>Manu</th>
+                                <th>Modify</th>
+                            </tr>
+                            <tr>
+                                <td>Accommodation</td>
+                                <td>$ {{data.accommodationSalesPolled}}</td>
+                                <td><input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['accommodationSalesPolled']">
+                                </td>
+                                <td><input type="checkbox" (click)="enableModifyClicked('accommodationSalesPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Refund Accom.</td>
+                                <td>$ {{data.refundAccommodationPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['refundAccommodationPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('refundAccommodationPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Voided Accom.</td>
+                                <td>$ {{data.voidedAccommodationsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['voidedAccommodationsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('voidedAccommodationsPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Rate Discounts</td>
+                                <td>$ {{data.rateDiscountsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['rateDiscountsPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('rateDiscountsPolled')"> Modify
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Coupon Discounts</td>
+                                <td>$ {{data.couponDiscountsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['couponDiscountsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('couponDiscountsPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>PROMO Discounts</td>
+                                <td>$ {{data.promoDiscountsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['promoDiscountsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('promoDiscountsPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Other Discounts</td>
+                                <td>$ {{data.otherDiscountsRolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['otherDiscountsRolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('otherDiscountsRolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Member Discounts</td>
+                                <td>$ {{data.memberDiscountsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['memberDiscountsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('memberDiscountsPolled')">
+                                    Modify</td>
+                            </tr>
+
+                            <tr class="total">
+                                <td><b>Total Accom.</b></td>
+                                <td><b>$ {{data.totalAccommodationSalesPolled}}</b></td>
+                                <td> <b><input type="number"
+                                            [formControl]="cashierReconciliationForm.controls['totalAccommodationSalesPolled']"></b>
+                                </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td>Deposits Collected</td>
+                                <td>$ {{data.depositsCollectedPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['depositsCollectedPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('depositsCollectedPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Deposits Returned</td>
+                                <td>$ {{data.depositsReturnedPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['depositsReturnedPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('depositsReturnedPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Membership Sales</td>
+                                <td>$ {{data.membershipSalesPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['membershipSalesPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('membershipSalesPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Other Sales</td>
+                                <td>$ {{data.otherSalesPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['otherSalesPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('otherSalesPolled')"> Modify
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bar Sales</td>
+                                <td>$ {{data.barSalesPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['barSalesPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('barSalesPolled')"> Modify</td>
+                            </tr>
+                            <tr class="total">
+                                <td><b>Final Sales Total</b></td>
+                                <td><b>$ {{data.totalFinalSalesPolled}}</b></td>
+                                <td> <b><input type="text"
+                                            [formControl]="cashierReconciliationForm.controls['totalFinalSalesPolled']"></b>
+                                </td>
+                                <td> </td>
+                            </tr>
+
+                            <tr>
+                                <td>Debit</td>
+                                <td>$ {{data.debitPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['debitPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('debitPolled')"> Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Master Card</td>
+                                <td>$ {{data.masterCardPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['masterCardPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('masterCardPolled')"> Modify
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>VISA</td>
+                                <td>$ {{data.visaPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['visaPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('visaPolled')"> Modify</td>
+                            </tr>
+                            <tr>
+                                <td>AMEX</td>
+                                <td>$ {{data.amexPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['amexPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('amexPolled')"> Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Discover</td>
+                                <td>$ {{data.discoverPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['discoverPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('discoverPolled')"> Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Other Credit Card 1</td>
+                                <td>$ {{data.otherCreditCardPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['otherCreditCardPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('otherCreditCardPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr class="total">
+                                <td><b>Total Debit Card</b></td>
+                                <td><b>$ {{data.totalDebitCreditPolled}}</b></td>
+                                <td> <b><input type="text"
+                                            [formControl]="cashierReconciliationForm.controls['totalDebitCreditPolled']"></b>
+                                </td>
+                                <td> </td>
+                            </tr>
+
+                            <tr>
+                                <td>EOS Debit/Credit </td>
+                                <td>$ {{data.eosDebitCreditTotalPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['eosDebitCreditTotalPolled']">
+                                </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td>Total US Dollars</td>
+                                <td>$ {{data.totalUsdollarsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['totalUsdollarsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('totalUsdollarsPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Total Euro Dollars</td>
+                                <td>$ {{data.totalEuroDollarsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['totalEuroDollarsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('totalEuroDollarsPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Final Cash Deposit</td>
+                                <td>$ {{data.finalCashDepositPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['finalCashDepositPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('finalCashDepositPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Paid Ins</td>
+                                <td>$ {{data.paidInsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['paidInsPolled']"> </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('paidInsPolled')"> Modify</td>
+                            </tr>
+                            <tr>
+                                <td>Receipts Paid Outs</td>
+                                <td>$ {{data.receiptsPaidOutsPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['receiptsPaidOutsPolled']">
+                                </td>
+                                <td> <input type="checkbox" (click)="enableModifyClicked('receiptsPaidOutsPolled')">
+                                    Modify</td>
+                            </tr>
+                            <tr class="total">
+                                <td><b>Cash Drop Total</b></td>
+                                <td><b>$ {{data.cashDropsTotalPolled}}</b></td>
+                                <td> <b><input type="text"
+                                            [formControl]="cashierReconciliationForm.controls['cashDropsTotalPolled']"></b>
+                                </td>
+                                <td> </td>
+                            </tr>
+
+                            <tr>
+                                <td>Over/Short</td>
+                                <td>$ {{data.cashOverShortPolled}}</td>
+                                <td> <input type="number"
+                                        [formControl]="cashierReconciliationForm.controls['cashOverShortPolled']"> </td>
+                                <td> &nbsp; &nbsp; &nbsp;<b> $ 90.00 </b> </td>
+                            </tr>
+
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

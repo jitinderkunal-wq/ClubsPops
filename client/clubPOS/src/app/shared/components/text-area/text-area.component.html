@@ -1,0 +1,9 @@
+<div class="myTextArea" [ngStyle]="customStyles">
+    <label class="form-label">{{ label }}</label>
+    <div>
+        <textarea [formControl]="control"
+            [ngClass]="(control.touched) ? control.invalid ? 'is-invalid': 'is-valid': null" class="form-control"
+            [rows]="rows" [cols]="cols"></textarea>
+        <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please enter your {{ label }}</div>
+    </div>
+</div>

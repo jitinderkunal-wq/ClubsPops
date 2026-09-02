@@ -1,0 +1,76 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Room Setup</h4>
+            </div>
+            <div class="col-6">
+                <button *ngIf="showConvertToEmployeeRoomButton" type="button" class="btn btn-warning"
+                    (click)="onConvertToEmployeeRoomButtonClick()"
+                    [disabled]="showConvertToEmployeeRoomButtonDisabled">{{convertToEmployeeRoomButtonText}}</button>
+            </div>
+        </div>
+        <form [formGroup]="roomSetupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="roomSetupForm.controls['accommodationId']" [options]="rooms"
+                        label="Select Room" [valueProperty]="'accommodationId'" [labelProperty]="'number'"
+                        (valueChange)="onRoomChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="accSet">
+                                <label>Accommodation Status</label>
+                                <p>{{accommodationStatus.statusName}}</p>
+                            </div>
+                            <app-text-input [formControl]="roomSetupForm.controls['number']"
+                                [label]="'Number'"></app-text-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <app-dropdown [formControl]="roomSetupForm.controls['accommodationTypeId']"
+                                [options]="accommodationTypes" label="Select Accommodation Type"
+                                [valueProperty]="'accommodationTypeId'" [labelProperty]="'typeName'"
+                                (valueChange)="onAccommodationTypeChange($event)">
+                            </app-dropdown>
+                            <app-text-input [formControl]="roomSetupForm.controls['floor']" [type]="'number'"
+                                [label]="'Floor'"></app-text-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4">
+                            <app-checkbox [formControl]="roomSetupForm.controls['deActivate']"
+                                [label]="'De-Activate'"></app-checkbox>
+                        </div>
+                        <div class="col-4">
+                            <app-checkbox [formControl]="roomSetupForm.controls['requiresCreditCard']"
+                                [label]="'Requires Credit Card'"></app-checkbox>
+                        </div>
+                        <div class="col-4">
+                            <app-checkbox [formControl]="roomSetupForm.controls['hasGloryHole']"
+                                [label]="'Has Glory Hole'"></app-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

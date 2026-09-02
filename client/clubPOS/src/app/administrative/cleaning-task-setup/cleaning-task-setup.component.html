@@ -1,0 +1,56 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Cleaning Task Setup</h4>
+            </div>
+        </div>
+        <form [formGroup]="cleaningTaskSetupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="cleaningTaskSetupForm.controls['cleaningTaskId']"
+                        [options]="cleaningTasks" label="Select Cleaning Task" [valueProperty]="'cleaningTaskId'"
+                        [labelProperty]="'taskName'" (valueChange)="onCleaningTaskChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mtSet">
+                                <label>Cleaning Task ID</label>
+                                <p>{{cleaningTaskCreateId}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <app-text-input [formControl]="cleaningTaskSetupForm.controls['taskName']"
+                                [label]="'Task Name'"></app-text-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4">
+                            <app-checkbox [formControl]="cleaningTaskSetupForm.controls['isActive']"
+                                [label]="'Is Active'"></app-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

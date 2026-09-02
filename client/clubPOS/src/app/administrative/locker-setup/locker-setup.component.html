@@ -1,0 +1,73 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-6">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Locker Setup</h4>
+            </div>
+            <div class="col-6">
+                <button *ngIf="showConvertToEmployeeLockerButton" type="button" class="btn btn-warning"
+                    (click)="onConvertToEmployeeLockerButtonClick()"
+                    [disabled]="showConvertToEmployeeLockerButtonDisabled">{{convertToEmployeeLockerButtonText}}</button>
+            </div>
+        </div>
+        <form [formGroup]="lockerSetupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="lockerSetupForm.controls['accommodationId']" [options]="lockers"
+                        label="Select Locker" [valueProperty]="'accommodationId'" [labelProperty]="'number'"
+                        (valueChange)="onLockerChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <app-text-input [formControl]="lockerSetupForm.controls['accommodationStatusId']"
+                                [type]="'number'" [label]="'Accommodation Status (By default available)'"></app-text-input> -->
+                            <div class="accSet">
+                                <label>Accommodation Status</label>
+                                <p>{{accommodationStatus.statusName}}</p>
+                            </div>
+                            <app-text-input [formControl]="lockerSetupForm.controls['number']"
+                                [label]="'Number'"></app-text-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="accSet">
+                                <label>Accommodation Type</label>
+                                <p>{{accommodationType.typeName}}</p>
+                            </div>
+                            <app-text-input [formControl]="lockerSetupForm.controls['floor']" [type]="'number'"
+                                [label]="'Floor'"></app-text-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4">
+                            <app-checkbox [formControl]="lockerSetupForm.controls['deActivate']"
+                                [label]="'De-Activate'"></app-checkbox>
+                        </div>
+                        <div class="col-4">
+                            <app-checkbox [formControl]="lockerSetupForm.controls['isGhost']"
+                                [label]="'Is Ghost'"></app-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <button mat-dialog-close type="button" class="btn"
+                            style="color: #F67600;background-color: black" (click)="closePopup()">Cancel</button>
+                        <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

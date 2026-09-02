@@ -1,0 +1,45 @@
+<div class="container model" *ngIf="accommodation">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <h1 mat-dialog-title>Room Maintenance</h1>
+                <p>{{accommodation.typeName + ' : #' + accommodation.number}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <div mat-dialog-content class="content">
+                    <div class="tabs">
+                        <div class="col-12">
+                            <div class="row tb">
+                                <div class="col-4" *ngFor="let maintenanceTask of maintenanceTasks">
+                                    <button (click)="onMaintenanceTaskClick(maintenanceTask)"
+                                        [ngClass]="{'selected': maintenanceTaskIds.includes(maintenanceTask.maintenanceTaskId)}">
+                                        {{maintenanceTask.taskName}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <form [formGroup]="createMaintenanceLogForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="comment">
+                            <textarea type="text" formControlName="comment" matInput placeholder="Ex. Comment"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div mat-dialog-actions class="hidePopup">
+                            <button type="button" class="btn" (click)="closePopup()"
+                                style="color: #F67600;background-color: black">Cancel</button>
+                            <button type="submit" class="btn btn-warning" mat-dialog-close [disabled]="!isMaintenanceTaskSelected">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

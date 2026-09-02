@@ -1,0 +1,111 @@
+.model {
+    background-color: black;
+    width: 1000px;
+    color: white;
+    padding: 0rem 2rem 0rem 2rem;
+    border: 1px solid var(--orange, #F67600);
+    box-shadow: 0px 0px 8px 0px rgb(253, 136, 2);
+
+    .header {
+        padding: 2rem 0rem 2rem 0rem;
+
+        b {
+            background-color: white;
+            padding: 1px 7px 1px 7px;
+            margin-right: 1rem;
+            cursor: pointer;
+            color: red;
+            font-size: 25px;
+        }
+
+        h4 {
+            color: white;
+        }
+
+        button {
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #ce6503;
+        }
+    }
+
+    .drp {
+        height: 30px;
+        width: 95%;
+        background-color: #0E1227;
+        color: gray;
+        margin: .5rem 0rem 0rem 0rem;
+    }
+
+    .btn {
+        background: #F67600;
+        color: white;
+        border-radius: 5px;
+        padding: 6px 20px 6px 20px;
+        margin: 2rem 2rem 0rem 0rem;
+        float: right;
+    }
+
+    .content {
+        background-color: #0E1227;
+        margin: 1rem 0rem 0rem 0rem;
+        padding: 1rem 1rem 1rem 1rem;
+        color: rgb(209, 207, 207);
+
+        .accSet {
+            padding-top: 1.5rem;
+            padding-bottom: 0.5rem;
+
+            p {
+                font-size: 1.2rem;
+                margin-top: 0.5rem;
+                background-color: grey;
+            }
+        }
+
+        .inp {
+            height: 20px;
+            width: 100%;
+            background-color: #0E1227;
+            color: white;
+            padding: 2rem;
+            margin: .5rem 0rem 1rem 0rem;
+            border: 1px solid #535355c2;
+            border-radius: 5px;
+        }
+
+        .checkbox {
+            height: 20px;
+            width: 20px;
+            background-color: #0E1227;
+            color: white;
+        }
+
+    }
+
+
+    .footer {
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        color: #F67600;
+        float: right;
+        padding: 1rem 0rem 1rem 0rem;
+        //margin-top: 1rem;
+
+        .btn {
+            background-color: #F67600;
+            color: white;
+            display: inline-flex;
+            padding: 14px 30px;
+            margin-left: .5rem;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--orange, #F67600);
+        }
+    }
+}

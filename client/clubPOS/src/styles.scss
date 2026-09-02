@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #060C18;
+}
+@media (max-width: 1500px) {
+    .booking {
+        
+        .right{
+            .myInput {
+                font-size: 12px !important;
+                margin-right: 10px;
+            }
+        }
+        
+    }
+}
+@media (max-width: 1024.98px) {
+    .booking {        
+        .right{
+            .myInput {
+                .form-label {
+                    width: 100% !important;
+                }
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,129 @@
+<div class="container model">
+    <div class="col-12">
+        <div class="row header">
+            <div class="col-12">
+                <h4 mat-dialog-title><b (click)="closePopup()">X</b>Members</h4>
+            </div>
+        </div>
+        <form [formGroup]="membershipForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-5">
+                    <app-dropdown [formControl]="membershipForm.controls['membershipId']" [options]="memberships"
+                        label="Select Membership" [valueProperty]="'membershipId'" [labelProperty]="'firstName'"
+                        (valueChange)="onMembershipChange($event)">
+                    </app-dropdown>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 left">
+                    <div class="row">
+                        <div class="col-6">
+                            <app-dropdown [formControl]="membershipForm.controls['membershipTypeId']"
+                                [options]="membershipTypes" label="Select Membership Type"
+                                [valueProperty]="'membershipTypeId'" [labelProperty]="'membershipTypeName'"
+                                (valueChange)="onMembershipTypeChange($event)">
+                            </app-dropdown>
+                        </div>
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['membershipNum']" [type]="'number'"
+                                [label]="'Membership Number'"></app-text-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['firstName']"
+                                [label]="'First Name'"></app-text-input>
+                        </div>
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['lastName']"
+                                [label]="'Last Name'"></app-text-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['phone']"
+                                [label]="'Phone'"></app-text-input>
+                        </div>
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['city']"
+                                [label]="'City'"></app-text-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['province']"
+                                [label]="'Province'"></app-text-input>
+                        </div>
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['country']"
+                                [label]="'Country'"></app-text-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['postalZipCode']"
+                                [label]="'Postal Zip Code'"></app-text-input>
+                        </div>
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['membershipStartDate']"
+                                [type]="'date'" [label]="'Membership Start Date'"></app-text-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <app-text-input [formControl]="membershipForm.controls['membershipEndDate']" [type]="'date'"
+                                [label]="'Membership End Date'"></app-text-input>
+                        </div>
+                        <div class="col-6">
+                            <app-checkbox [formControl]="membershipForm.controls['isActive']"
+                                [label]="'Is Active'"></app-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <app-text-area [formControl]="membershipForm.controls['address']" [label]="'Address'"
+                            [rows]="2"></app-text-area>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-12 right">
+                            <h5>Credit Card Information</h5>
+                            <div *ngIf="!isCreditCard">
+                                Information not available.
+                            </div>
+                            <div *ngIf="isCreditCard">
+                                <div class="col-12">
+                                    <app-dropdown [formControl]="membershipForm.controls['creditCardTypeId']"
+                                        [options]="creditCardTypes" label="Select Credit Card Type"
+                                        [valueProperty]="'creditCardTypeId'" [labelProperty]="'creditCardTypeName'"
+                                        (valueChange)="onCreditCardTypeChange($event)">
+                                    </app-dropdown>
+                                </div>
+                                <div class="col-12">
+                                    <app-text-input [formControl]="membershipForm.controls['creditCardNumber']"
+                                        [label]="'Credit Card Number'"></app-text-input>
+                                </div>
+                                <div class="col-12">
+                                    <app-text-input [formControl]="membershipForm.controls['creditCardExpiry']"
+                                        [type]="'date'" [label]="'Credit Card Expiry Date'"></app-text-input>
+                                </div>
+                                <div class="col-12">
+                                    <app-text-input [formControl]="membershipForm.controls['csv']"
+                                        [label]="'CSV'"></app-text-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="footer">
+                                <button type="button" class="btn" style="color: #F67600;background-color: black"
+                                    mat-dialog-close>Cancel</button>
+                                <button type="submit" class="btn btn-warning">{{saveButtonText}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
